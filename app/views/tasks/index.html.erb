@@ -1,1 +1,7 @@
 <h1> Tweets index </h1>
+
+<% @tasks.each do |task|  %>
+    <p><%= task.id %> - <%= task.title %> - <%= task.description %></p>
+<% end %>    
+
+<% link_to('Nuevo Task', new_task_path) %>
