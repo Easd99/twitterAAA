@@ -6,7 +6,6 @@ class TasksController < ApplicationController
     end
     
     def show
-
     end
 
     def new
@@ -14,22 +13,24 @@ class TasksController < ApplicationController
     end
 
     def create
-        @task = Task.new(task_params)
+        @task =Task.new(task_params)
         if @task.save
-            redirect_to tasks_path, notice: "Twitt saved!"
+            redirect_to tasks_path, notice: "Enviado"
         else
-            render :new
+            reder :new
         end
     end
-
-
+    
     private
-
+    
     def task_params
-        params.require(:task).permit( :description)
+        params.require(:task).permit(:description)
     end
 
 
 
 
 end
+
+
+

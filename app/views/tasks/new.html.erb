@@ -1,13 +1,12 @@
-<h2> Create task </h2>
+<h2>Nuevo Task</h2>
 
 
-
-<%= form_with(model: Task, local: true) do |form| %>
-    <%= form.label :description%>
-    <%= form.text_area :description%>
-    <%=form.submit "Twittear",  size: "70x5"%>
+<%= form_with(model: Task, local: true) do |form|%>
+    
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+    <%= form.submit "Postear" %>
 <%end%>
 
+<%= link_to('Ver Tasks', tasks_path)%>
 
-
-<%= link_to('View all tasks', tasks_path)%>

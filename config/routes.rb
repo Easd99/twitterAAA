@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   get '/confirmationsuccessfull', to: 'home#successfull'
   root  'home#index'
+  get '/index', to: 'tasks#index'
   resources :tasks
   
 
