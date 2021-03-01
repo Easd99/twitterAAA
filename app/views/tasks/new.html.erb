@@ -1,0 +1,12 @@
+<h2>Nuevo Task</h2>
+
+
+<%= form_with(model: Tweet, local: true) do |form|%>
+    
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+    <%= form.submit "Postear" %>
+<%end%>
+
+<%= link_to('Ver Tasks', tasks_path)%>
+
