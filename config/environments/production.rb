@@ -83,7 +83,19 @@ Rails.application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
-
+  config.action_mailer.default_url_options = {:host => 'books-app-api.herokuapp.com', :protocol => 'http'} #I've also tried it without ":protocol => 'http'"
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.smtp_settings = {
+    address:'smtp.gmail.com',
+    port:'465',
+    domain:'gmail.com',
+    user_name: ENV['GMAIL_USERNAME'],
+    password:  ENV['GMAIL_PASSWORD'],
+    authentication: 'plain',
+    enable_starttls_auto: true
+    }
   # Use a different logger for distributed setups.
   # require "syslog/logger"
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
