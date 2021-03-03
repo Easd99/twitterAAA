@@ -1,8 +1,16 @@
 <h1> Tweets index </h1>
 
-<% @tasks.each  do |task|%>
-    <p><%=task.id %> - <%=task.description %></p>
-<%end%>
+<table class="default" border ="1">
+    <% @tasks.each  do |task|%>
+     <tr>
+        <td> <p><%=task.id %> - <%=task.description %></p> </td>
+      </tr>
+    <%end%>
+</table>
+
+
+
+
 
 <%= link_to('New Task', new_task_path)%>
 
