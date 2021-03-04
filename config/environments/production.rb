@@ -93,7 +93,10 @@ Rails.application.configure do
     :password => 'nosequeponer123'
   }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d1a0f2315d5f19f9e681dfcf74337950796b3649
   # Use a different logger for distributed setups.
   # require "syslog/logger"
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
