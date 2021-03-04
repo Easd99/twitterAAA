@@ -1,27 +1,16 @@
 <h1> Tweets index </h1>
-
-
-<div id="content" >
-    <div class="wrapper">	
+<div>
+    <div>	
     <% @tasks.each  do |task|%>
         <table class="twets" >
-            <tr >
-
-            <%= us = task.user %>
-                <td > <p><%=us.username %> - <%=task.description %></p> </td>
+            <tr  >
+                <td> <p><%= task.user.username %> </td>  <td class="tabla">  <%=task.description %></p> </td>
             </tr>
             <%end%>
         </table>
     </div>
 </div>
-
-<div class="text_area_task">
-
 </div>
-
-
-
-
 <%= link_to('New Task', new_task_path)%>
 
 
