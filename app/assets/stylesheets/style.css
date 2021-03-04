@@ -1,3 +1,38 @@
-p {
-    color: red;
-  }
+
+  .text_area_task{
+    resize: none ;
+}
+
+.join {
+  display: block;
+  width: 9.5em;
+  text-align: center;
+  margin: 1em auto .5em;
+  background: #97cd39;
+  color: #fff;
+  font-size: 1.5em;
+  padding: 4px;
+  border: 1px solid #000;
+  text-decoration: none;
+}
+
+.wrapper { 
+  background: #fff;
+  padding: 5px 10px 15px; }
+
+.index-link {
+  color: blue;
+  padding: 10px;
+}
+
+.twets{
+  margin: 0 auto ;
+  border-top: rgb(131, 130, 130) 0.03cm solid;
+  border-bottom:rgb(131, 130, 130) 0.03cm solid;
+  width: 500px;
+	height: 50px;
+}
+
+.margen{
+  margin: 0 auto ;
+}

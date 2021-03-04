@@ -1,13 +1,23 @@
 <h1> Tweets index </h1>
 
-<table class="default" border ="1">
-    <% @tasks.each  do |task|%>
-     <tr>
-        <td> <p><%=task.id %> - <%=task.description %></p> </td>
-      </tr>
-    <%end%>
-</table>
 
+<div id="content" >
+    <div class="wrapper">	
+    <% @tasks.each  do |task|%>
+        <table class="twets" >
+            <tr >
+
+            <%= us = task.user %>
+                <td > <p><%=us.username %> - <%=task.description %></p> </td>
+            </tr>
+            <%end%>
+        </table>
+    </div>
+</div>
+
+<div class="text_area_task">
+
+</div>
 
 
 

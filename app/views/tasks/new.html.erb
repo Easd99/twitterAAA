@@ -2,9 +2,11 @@
 
 
 <%= form_with(model: Task, local: true) do |form|%>
+    <div class="text_area_task">
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, size: "70x5" %>
     <%= form.submit "Postear" %>
+    </div>
 <%end%>
 
 <%= link_to('Ver Tasks', tasks_path)%>

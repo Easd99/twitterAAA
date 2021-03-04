@@ -6,7 +6,7 @@ class User < ApplicationRecord
   end
 
   validates :username, uniqueness: true
-
+  has_many :tasks
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
