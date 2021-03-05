@@ -2,12 +2,21 @@
 <div>
     <div>	
     <% @tasks.each  do |task|%>
-        <table class="twets" >
-            <tr  >
-                <td> <p><%= task.user.username %> </td>  <td class="tabla">  <%=task.description %></p> </td>
-            </tr>
-            <%end%>
-        </table>
+        <% if task.id == 1 %>  
+             <table class="twets_top" >
+                <tr >
+                    <td> <p><%= task.user.username %> </td>  <td class="tabla">  <%=task.description %></p> </td>
+                </tr>
+            </table>
+        <%else%>
+            <table class="twets" >
+                <tr >
+                    <td> <p><%= task.user.username %> </td>  <td class="tabla">  <%=task.description %></p> </td>
+                </tr>
+            </table>
+        <%end%>
+ 
+        <%end%>
     </div>
 </div>
 </div>

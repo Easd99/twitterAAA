@@ -1,5 +1,5 @@
 
-  .text_area_task{
+.text_area_task{
     resize: none ;
       padding: 3px 10px;
       border: PowderBlue 5px solid;
@@ -54,4 +54,12 @@
   margin: 0 auto ;
   max-width: 500px;
 	max-height: 50px;
+}
+.twets_top{
+  margin: 0 auto ;
+  /*border-top: rgb(131, 130, 130) 0.03cm solid;*/
+  border-bottom:rgb(131, 130, 130) 0.03cm solid;
+  max-width: 500px;
+	max-height: 50px;
+  border-top:rgb(131, 130, 130) 0.03cm solid;
 }
