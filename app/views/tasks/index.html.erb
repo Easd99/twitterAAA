@@ -9,14 +9,15 @@
                 </tr>
             </table>
         <%else%>
-            <table class="twets" >
-                <tr >
-                    <td> <p><%= task.user.username %> </td>  <td class="tabla">  <%=task.description %></p> </td>
-                </tr>
-            </table>
+        <table class="twets" >
+            <tr  >
+                <td> <p><%= task.user.username %> </td>  <td class="tabla">  <%=task.description %> <%= link_to('Detalles', task_path(task.id)) %>    <%= link_to('Delete', task_path(task.id), method: 'delete', data: {confirm: "Are you SURE?"}) %>  </p> </td>
+            </tr>
+        </table>
         <%end%>
  
         <%end%>
+
     </div>
 </div>
 </div>
