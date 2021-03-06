@@ -16,9 +16,6 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { :host => 'twitteraaa.herokuapp.com' }
 
 
-
-
-
   # Show full error reports.
   config.consider_all_requests_local = true
   # Enable/disable caching. By default caching is disabled.
