@@ -15,6 +15,8 @@ Rails.application.configure do
   config.action_controller.default_url_options = {:host => "twitteraaa.herokuapp.com"}
   config.action_mailer.default_url_options = { :host => 'twitteraaa.herokuapp.com' }
 
+  #config.action_controller.default_url_options = {:host => 'localhost'}
+  #config.action_mailer.default_url_options = { :host => 'localhost' }
 
   # Show full error reports.
   config.consider_all_requests_local = true
