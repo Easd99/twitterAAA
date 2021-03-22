@@ -1,14 +1,13 @@
 class TasksController < ApplicationController
     before_action :authenticate_user!
+    before_action :set_task, only: [:show, :destroy]
 
     def index
         #@tasks = Task.where(user_id: current_user.id)
         @tasks = Task.all
     end
     
-    def show
-       @task=Task.find(params[:id])
-      
+    def show        
     end
 
     def new
@@ -27,16 +26,18 @@ class TasksController < ApplicationController
 
 
     def destroy
-        @task = Task.find(params[:id])
         @task.destroy
         redirect_to tasks_path, notice: "Tweet eliminado"
       end
     
     private
     
+    def set_task
+        @task=Task.find(params[:id])
+    end
+
     def task_params
         params.require(:task).permit(:description, :user_id)
-        
     end
 
 

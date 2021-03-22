@@ -8,6 +8,13 @@ Rails.application.routes.draw do
   root  'home#index'
   get '/index', to: 'tasks#index'
   resources :tasks
+
+  namespace :api do
+    namespace :v1 do
+      resources :tasks, only: [:index, :show, :create, :destroy]
+    end
+  end
+
   
   #get '/confirmationsuccessfull', to: 'tasks#index'
   #resource: tasks
