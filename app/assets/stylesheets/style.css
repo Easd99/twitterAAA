@@ -1,4 +1,19 @@
 
+body{
+  background-color: rgb(21, 32, 43);
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/*-------------------------------------HEADER-----------------------------------------*/
+header{
+  width: 400px;
+  height: 100px;
+  margin: 0 auto ;
+  float: initial;
+}
+/*-------------------------------------FIN HEADER--------------------------------------------*/
+
 .text_area_task{
     resize: none ;
       padding: 3px 10px;
@@ -9,58 +24,150 @@
     
 }
 
-.join {
-  display: block;
-  width: 9.5em;
-  text-align: center;
-  margin: 1em auto .5em;
-  background: #97cd39;
-  color: #fff;
-  font-size: 1.5em;
-  padding: 4px;
-  border: 1px solid #000;
-  text-decoration: none;
-}
-
-.wrapper { 
-  background: #fff;
-  padding: 5px 10px 15px; }
-
-.index-link {
-  color: blue;
-  padding: 10px;
-}
-
-.twets{
-  margin: 0 auto ;
-  /*border-top: rgb(131, 130, 130) 0.03cm solid;*/
-  border-bottom:rgb(131, 130, 130) 0.03cm solid;
-  max-width: 500px;
-	max-height: 50px;
-}
 
 .margen{
   margin: 0 auto ;
 }
 
-.tabla{
-  -ms-word-break: break-all;
-  word-break: break-all;
-     hyphens: auto;
-     width: 400px;
-     height: 50px;
-}
 .post{
   margin: 0 auto ;
   max-width: 500px;
 	max-height: 50px;
 }
-.twets_top{
+
+
+/*------------------------------MAIN LOGIN--------------------------------*/
+div.content{
+  width: 1300px;
+  height: 420px;
   margin: 0 auto ;
-  /*border-top: rgb(131, 130, 130) 0.03cm solid;*/
-  border-bottom:rgb(131, 130, 130) 0.03cm solid;
-  max-width: 500px;
-	max-height: 50px;
-  border-top:rgb(131, 130, 130) 0.03cm solid;
 }
 
+div.idk{
+  width: 800px;
+  height: 400px;
+  margin: 0 auto ;
+  padding: 5px 10px 15px; 
+}
+
+div.registro{
+  width: 60%;
+  height: 400px;
+  margin: 0 auto ;
+  float: left;
+}
+
+div.login{
+  width: 40%;
+  height: 400px;
+  margin: 0 auto ;
+  float: right;
+}
+
+a.join {
+  display: block;
+  width: 9.5em;
+  text-align: center;
+  margin: 1em auto .5em;
+  background: #97cd39;
+  font-size: 1.5em;
+  padding: 4px;
+  border: 1px solid #000;
+  text-decoration: none;
+  color: #fff;
+  position: relative;
+  top: 10%;
+}
+
+.wrapper { 
+  padding: 5px 10px 15px; 
+}
+
+/*------------------------------FIN MAIN REGISTRO--------------------------------*/
+
+
+
+
+/*------------------------------ESPACIO DE HIPERVILCULOS--------------------------------*/
+
+
+a.rst:link {
+  color: rgb(29, 161, 242);
+  text-decoration: none;
+}
+a.rst:visited {
+  color: rgb(29, 161, 242);
+}
+/*a:active {
+}*/
+a.rst:hover {
+  font-size:20px;
+}
+a.rst2:link {
+  color: rgb(29, 161, 242);
+  text-decoration: none;
+}
+a.rst2:visited {
+  color: rgb(29, 161, 242);
+}
+/*a:active {
+}*/
+a.rst2:hover {
+  font-size:17px;
+}
+/*-------------------------------------FIN--------------------------------------------*/
+
+
+
+/*------------------------ESPACIO DE TWITTS--------------------------------------------*/
+
+/* Controla el espacio en donde se muestran los twits y luego se subdivide en 3 partes*/
+div.twets_contend{
+  margin: 0 auto ;
+  min-height: 40px;
+  width: 400px;
+  left: 850px;
+  -ms-word-break: break-all;
+  word-break: break-all;
+  hyphens: auto;
+} 
+
+/*Subdivision superior*/
+div.twets_bar_sup{
+  width: 100%;
+  height: 20%;
+}
+
+label.der{
+  color: rgb(131, 130, 130);
+}
+
+/*Subdivision central*/
+div.twets_bar_cen{
+  width: 100%;
+  height: 60%;
+  
+}
+
+/*Subdivision inferior*/
+div.twets_bar_inf{
+  width: 100%;
+  height: 20%;
+  color: rgb(29, 161, 242);
+}
+/*La suma de la anchura las 3 subdivisiones debe dar 100%*/
+
+/*Linea de borde superior*/
+hr.borde_first{
+  border-bottom:rgb(131, 130, 130) 0.03cm solid;
+  border: 1px solid;
+}
+
+/*Linea de borde */
+hr.borde{
+  border-top:rgb(131, 130, 130) 0.03cm solid;
+  border-bottom:rgb(131, 130, 130) 0.03cm solid;
+  border: 1px solid;
+}
+
+/*-------------------------------------FIN DE ESPACIO TWITTS------------------------------*/

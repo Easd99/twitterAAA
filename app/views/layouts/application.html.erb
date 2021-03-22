@@ -12,13 +12,13 @@
   </head>
 
   <body>
+  
     <p class="notice"><%= notice %> </p>
     <p class="alert"><%= alert %> </p>
 
   <div>
-
-    <%= link_to('logout', destroy_user_session_path, method: :delete) if  user_signed_in? %>
-    <%= link_to(  'Login', new_user_session_path  ) unless  user_signed_in? %>     
+    <%= link_to('logout', destroy_user_session_path, method: :delete , class:"rst") if  user_signed_in? %>
+    <%= link_to(  'Login', new_user_session_path, class:"rst"  ) unless  user_signed_in? %>     
   </div>  
     <%= yield %>
   </body>
