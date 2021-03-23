@@ -1,9 +1,8 @@
 module Api
     module V1
         class TasksController < ApiController
-            
                 before_action :set_task, only: [:show, :destroy]
-
+                before_action :check_basic_auth
                 def index
                     #@tasks = Ta    sk.where(user_id: current_user.id)
                     @tasks = Task.all
@@ -20,14 +19,14 @@ module Api
             
                 def create
                     @task =Task.new(task_params)
-                    @task.user_id = User.first.id
+                    @task.user_id = current_user.id
                     if @task.save
                        # redirect_to tasks_path #, notice: "Enviado"
                         render json: @task, status: :ok
                     else
                         #render :new
-                        message_error = "No se envio el twitt"
-                        render error: {error: message_error , status: 400 }
+                        message_eror = "No se envio el twitt"
+                        render :json => {:error => message_error}.to_json, :status => 400
                     end
                 end
             
@@ -46,7 +45,6 @@ module Api
                 def task_params
                     params.require(:task).permit(:description, :user_id)
                 end
-
         end
     end
 end
