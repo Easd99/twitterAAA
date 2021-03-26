@@ -9,7 +9,7 @@ module Api
 
                 authenticate_with_http_basic do |email, user_token|
                     user =  User.authenticate(email,user_token)
-                    unless user.empty?
+                    unless user.blank?
                             @current_user = user
                     else
                         head :unauthorized
