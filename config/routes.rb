@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     end
   end
 
+
   
   #get '/confirmationsuccessfull', to: 'tasks#index'
   #resource: tasks
