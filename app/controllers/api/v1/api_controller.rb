@@ -3,19 +3,29 @@ module Api
         class ApiController < ActionController::Base
             skip_before_action :verify_authenticity_token
             before_action :check_basic_auth
+            rescue_from ActiveRecord::RecordNotFound, with: :render404
 
             def check_basic_auth
-                #params[:email] paramas[:password]
-                authenticate_with_http_basic do |email, password|
-                    user = User.find_by_name(email)
-                    if !user.nil? && User.authenticate(email,password)
-                        @current_user = user  
-                    else
-                      head :unauthorized
-                    end  
 
-                end 
-            end    
+                authenticate_with_http_basic do |email, user_token|
+                    user =  User.authenticate(email,user_token)
+                    unless user.empty?
+                            @current_user = user
+                    else
+                        head :unauthorized
+                    end
+                end
+            end
+
+
+            private
+            def current_user
+                @current_user
+            end
+
+            def render404
+                render :json => {:error => "TWITT NO ENCONTRADO"}.to_json, :status => 400
+            end
         end
     end
 end

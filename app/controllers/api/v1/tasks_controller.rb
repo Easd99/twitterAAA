@@ -1,17 +1,24 @@
 module Api
     module V1
         class TasksController < ApiController
-            
                 before_action :set_task, only: [:show, :destroy]
-
+                
                 def index
-                    #@tasks = Ta    sk.where(user_id: current_user.id)
-                    @tasks = Task.all
-                    render json: @tasks
+                    if(current_user.blank?)
+                        render :json => {:error => "NO PERMITIDO"}.to_json, :status => 404
+                    else
+                        #@tasks = Ta    sk.where(user_id: current_user.id)
+                        @tasks = Task.all
+                        render json: @tasks
+                    end
                 end
 
-                def show    
-                    render json: @task    
+                def show
+                    if(current_user.blank?)
+                        render :json => {:error => "NO PERMITIDO"}.to_json, :status => 404
+                    else    
+                        render json: @task   
+                    end 
                 end
             
                 def new
@@ -19,24 +26,31 @@ module Api
                 end
             
                 def create
-                    @task =Task.new(task_params)
-                    @task.user_id = User.first.id
-                    if @task.save
-                       # redirect_to tasks_path #, notice: "Enviado"
-                        render json: @task, status: :ok
+                    if(current_user.blank?)
+                        render :json => {:error => "NO PERMITIDO"}.to_json, :status => 404
                     else
-                        #render :new
-                        message_error = "No se envio el twitt"
-                        render error: {error: message_error , status: 400 }
+                        @task =Task.new(task_params)
+                        @task.user_id = current_user.id
+                        if @task.save
+                            # redirect_to tasks_path #, notice: "Enviado"
+                            render json: @task, status: :ok
+                        else
+                            #render :new
+                            message_eror = "No se envio el twitt"
+                            render :json => {:error => message_error}.to_json, :status => 400
+                        end
                     end
-                end
-            
+                end        
+
             
                 def destroy
-                    @task.destroy
-                    head :no_content
+                    if(current_user.blank?)
+                        render :json => {:error => "NO PERMITIDO"}.to_json, :status => 404
+                    else
+                        @task.destroy
+                        head :no_content
+                    end
                 end
-                
                 private
                 
                 def set_task
@@ -46,7 +60,6 @@ module Api
                 def task_params
                     params.require(:task).permit(:description, :user_id)
                 end
-
         end
     end
 end
