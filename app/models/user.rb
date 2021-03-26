@@ -14,7 +14,7 @@ class User < ApplicationRecord
 
          
   def self.authenticate(email, user_token)
-    where("email  = ? AND authentication_token= ?", email, user_token)
+    where("email  = ? AND authentication_token= ?", email, user_token).first
   end
          
 end
