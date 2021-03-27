@@ -48,8 +48,13 @@ module Api
                 if(current_user.blank?)
                     render :json => {:error => "UNAUTHORIZED"}.to_json, :status => 404
                 else
-                    @task.destroy
-                    render :json => {:error => "NO CONTENT"}.to_json, :status => 204
+                    if (@task.user_id == current_user.id)
+                        @task.destroy
+                        render :json => {:error => "NO CONTENT"}.to_json, :status => 204
+                    else
+                        render :json => {:error => "CAN'T DELETE THIS TWEET"}.to_json, :status => 404
+                    end
+                   
                 end
             end
         

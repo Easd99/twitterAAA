@@ -4,7 +4,7 @@ module Api
             skip_before_action :verify_authenticity_token
             rescue_from ActionController::ParameterMissing, with: :render404
             rescue_from ActiveRecord::RecordInvalid, with: :render404
-
+            
             def index
                 user = User.authenticateShow(user_param_mail)
                 unless user.blank?
