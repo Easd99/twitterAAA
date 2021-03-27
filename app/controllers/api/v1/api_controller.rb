@@ -9,9 +9,14 @@ module Api
                 authenticate_with_http_basic do |email, user_token|
                     user =  User.authenticate(email,user_token)
                     unless user.blank?
-                         @current_user = user
+                        if user.confirmed?
+                            @current_user = user
+                        else
+                            render :json => {:error => "UNCONFIRMED EMAIL"}.to_json, :status => 401
+                        end
+                         
                     else
-                        hrender :json => {:error => "USUARIO Y / O CONTRASENA INCORRECTOS"}.to_json, :status => 404
+                        render :json => {:error => "USUARIO Y / O CONTRASENA INCORRECTOS"}.to_json, :status => 422
                     end
                 end
             end
@@ -22,7 +27,7 @@ module Api
                 @current_user
             end
             def render404
-                render :json => {:error => "TWITT NO ENCONTRADO"}.to_json, :status => 400
+                render :json => {:error => "TWITT NOT FOUND"}.to_json, :status => 204
             end
         end
     end

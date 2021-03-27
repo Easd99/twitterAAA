@@ -17,11 +17,8 @@ class User < ApplicationRecord
     where("email  = ? AND authentication_token= ?", email, user_token).first
   end
 
-  def self.authenticateShow(email, password)
-    find_by(email: email).valid_password?(password)
-    if(find_by(email: email).valid_password?(password))
-      find_by(email: email)
-    end
+  def self.authenticateShow(email)
+    find_by(email: email)
   end
          
 end

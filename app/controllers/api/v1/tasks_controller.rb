@@ -5,7 +5,7 @@ module Api
                 
             def index
                 if(current_user.blank?)
-                    render :json => {:error => "NO PERMITIDO"}.to_json, :status => 404
+                    render :json => {:error => "UNAUTHORIZED"}.to_json, :status => 401
                   else
                     #@tasks = Ta    sk.where(user_id: current_user.id)
                     @tasks = Task.all
@@ -16,19 +16,19 @@ module Api
 
             def show
                 if(current_user.blank?)
-                    render :json => {:error => "NO PERMITIDO"}.to_json, :status => 404
+                    render :json => {:error => "UNAUTHORIZED"}.to_json, :status => 401
                 else    
                     render json: @task   
                 end 
             end
             
-                def new
-                    @task = Task.new
-                end
-            
+            def new
+                @task = Task.new
+            end 
+
             def create
                 if(current_user.blank?)
-                    render :json => {:error => "NO PERMITIDO"}.to_json, :status => 404
+                    render :json => {:error => "UNAUTHORIZED"}.to_json, :status => 404
                 else
                     @task =Task.new(task_params)
                     @task.user_id = current_user.id
@@ -37,7 +37,7 @@ module Api
                         render json: @task, status: :ok
                     else
                         #render :new
-                        message_eror = "No se envio el twitt"
+                        message_error = "CAN'T SAVE TWEET"
                         render :json => {:error => message_error}.to_json, :status => 400
                     end
                 end
@@ -46,10 +46,10 @@ module Api
             
             def destroy
                 if(current_user.blank?)
-                    render :json => {:error => "NO PERMITIDO"}.to_json, :status => 404
+                    render :json => {:error => "UNAUTHORIZED"}.to_json, :status => 404
                 else
                     @task.destroy
-                    head :no_content
+                    render :json => {:error => "NO CONTENT"}.to_json, :status => 204
                 end
             end
         
