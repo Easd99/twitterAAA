@@ -1,5 +1,5 @@
 module Api
-    module V1
+    module V2
         class TasksController < ApiController
             before_action :set_task, only: [:show, :destroy]
                 
