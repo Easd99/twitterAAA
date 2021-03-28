@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2021_03_27_165414) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "authentication_token", limit: 30
-    t.string "jti"
+    t.string "jti", null: false
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["jti"], name: "index_users_on_jti", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

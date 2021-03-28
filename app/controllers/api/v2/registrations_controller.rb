@@ -13,6 +13,8 @@ module Api
                     render :json => {:error => message_error}.to_json, :status => 422
                 end
             end
+
+            
             
         end
     end

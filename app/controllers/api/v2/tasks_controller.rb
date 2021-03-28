@@ -6,7 +6,7 @@ module Api
             def index
                 if(current_user.blank?)
                     render :json => {:error => "UNAUTHORIZED"}.to_json, :status => 401
-                  else
+                  else  
                     #@tasks = Ta    sk.where(user_id: current_user.id)
                     @tasks = Task.all
                     render json: @tasks
@@ -17,7 +17,8 @@ module Api
             def show
                 if(current_user.blank?)
                     render :json => {:error => "UNAUTHORIZED"}.to_json, :status => 401
-                else    
+                else
+
                     render json: @task   
                 end 
             end
