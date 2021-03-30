@@ -11,7 +11,7 @@ module Api
                   token = user.generate_jwt
                   render :json => { "user" => user , "token" => token} .to_json
                 else
-                  render :json => {:error => "USUARIO Y / O CONTRASENA INCORRECTOS"}.to_json, :status => 422
+                  render :json => {:error => "USER AND/OR PASSWORD INCORRECT"}.to_json, :status => 404
                 end
               end
             end

@@ -4,7 +4,7 @@ module Api
                 skip_before_action :verify_authenticity_token
                 respond_to :json
                 before_action :auth
-                rescue_from JWT::ExpiredSignature, JWT::VerificationError, JWT::DecodeError, with: :render422
+                rescue_from JWT::ExpiredSignature, JWT::VerificationError, JWT::DecodeError, with: :render401
 
                 private
               
@@ -29,8 +29,8 @@ module Api
                   @current_user_id.present?
                 end
 
-                def render422
-                  render :json => {:error => "USUARIO Y / O CONTRASENA INCORRECTOS"}.to_json, :status => 422
+                def render401
+                  render :json => {:error => "UNAUTHORIZED"}.to_json, :status => 401
                 end
         end
     end
