@@ -7,6 +7,10 @@ module Api
                 if(current_user.blank?)
                     render :json => {:error => "UNAUTHORIZED"}.to_json, :status => 401
                   else  
+<<<<<<< HEAD
+=======
+                   
+>>>>>>> cae9ea3f4dc755b0ba76d1b891b5ef4d63f99800
                     @tasks = Task.all
                     render json: @tasks
                 end
