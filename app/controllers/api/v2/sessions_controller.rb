@@ -4,25 +4,31 @@ module Api
             skip_before_action :verify_authenticity_token
             respond_to :json
             
+            def create
+              user = User.authenticateShow(user_param_email)
+              unless user.blank?
+                if user.valid_password?(user_param_pass)
+                  token = user.generate_jwt
+                  render :json => { "user" => user , "token" => token} .to_json
+                else
+                  render :json => {:error => "USUARIO Y / O CONTRASENA INCORRECTOS"}.to_json, :status => 422
+                end
+              end
+            end
+
 
             private
-            def respond_with(resource, _opts = {})
-                render json: resource
-
-            end
             def respond_to_on_destroy
-                user =  User.authenticateShow(user_param_email)
-                if user.valid_password?(user_param_pass)
-                    User.idk(user)
-                end
-                head :no_content
+              head :no_content
             end
+
             def user_param_email
                 params.require(:email)
             end
             def user_param_pass
                 params.require(:password)
             end
+        
 
         end
     end

@@ -24,16 +24,9 @@ class User < ApplicationRecord
     find_by(email: email)
   end
 
-  def self.jwt_payload
-    { 'foo' => 'bar' }
-  end
 
-  def self.idk(user) 
-    revoke_jwt(User.jwt_payload,user)
-  end
-
-  def self.authenticate_with_password(email, password)
-    where("email  = ? AND = encrypted_password= ?", email, user_token).first
+  def generate_jwt
+    JWT.encode({id: id, exp: 10.seconds.from_now.to_i}, Rails.application.secrets.secret_key_base)
   end
          
 end

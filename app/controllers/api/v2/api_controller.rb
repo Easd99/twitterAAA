@@ -1,34 +1,37 @@
 module Api
     module V2
         class ApiController < ActionController::Base
-            skip_before_action :verify_authenticity_token
-            before_action :check_basic_auth
-            rescue_from ActiveRecord::RecordNotFound, with: :render404
+                skip_before_action :verify_authenticity_token
+                respond_to :json
+                before_action :auth
+                rescue_from JWT::ExpiredSignature, JWT::VerificationError, JWT::DecodeError, with: :render422
 
-            def check_basic_auth
-                authenticate_or_request_with_http_token do |token, _options|
-                    user =  User.find_by(jti: token)
-                    unless user.blank?
-                        if user.confirmed?
-                            @current_user = user
-                        else
-                            render :json => {:error => "UNCONFIRMED EMAIL"}.to_json, :status => 401
-                        end
-                         
-                    else
-                        render :json => {:error => "USUARIO Y / O CONTRASENA INCORRECTOS"}.to_json, :status => 422
+                private
+              
+                def auth
+                    authenticate_or_request_with_http_token do |token, _options|
+                      jwt_payload = JWT.decode(token.split(' ')[0], Rails.application.secrets.secret_key_base).first
+                      @current_user_id = jwt_payload['id']
                     end
                 end
-            end
+              
 
+                def authenticate_user!(options = {})
+                  head :unauthorized unless signed_in?
+                end
+              
+                def current_user
+                  @current_user ||= super || User.find(@current_user_id)
+                end
+              
+                
+                def signed_in?
+                  @current_user_id.present?
+                end
 
-            private
-            def current_user
-                @current_user
-            end
-            def render404
-                render :json => {:error => "TWITT NOT FOUND"}.to_json, :status => 204
-            end
+                def render422
+                  render :json => {:error => "USUARIO Y / O CONTRASENA INCORRECTOS"}.to_json, :status => 422
+                end
         end
     end
 end
