@@ -28,7 +28,7 @@ class User < ApplicationRecord
     { 'foo' => 'bar' }
   end
 
-  def self.idk(user) 
+  def self.change_token(user) 
     revoke_jwt(User.jwt_payload,user)
   end
 

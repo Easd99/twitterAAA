@@ -16,7 +16,7 @@ module Api
                         end
                          
                     else
-                        render :json => {:error => "USUARIO Y / O CONTRASENA INCORRECTOS"}.to_json, :status => 422
+                        render :json => {:error => "TOKEN INCORRECTO"}.to_json, :status => 422
                     end
                 end
             end

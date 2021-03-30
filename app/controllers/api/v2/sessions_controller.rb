@@ -13,7 +13,7 @@ module Api
             def respond_to_on_destroy
                 user =  User.authenticateShow(user_param_email)
                 if user.valid_password?(user_param_pass)
-                    User.idk(user)
+                    User.change_token(user)
                 end
                 head :no_content
             end
