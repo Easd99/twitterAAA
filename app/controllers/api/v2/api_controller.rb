@@ -5,6 +5,7 @@ module Api
                 respond_to :json
                 before_action :auth
                 rescue_from JWT::ExpiredSignature, JWT::VerificationError, JWT::DecodeError, with: :render401
+                rescue_from ActiveRecord::RecordNotFound, with: :render404
 
                 private
               
@@ -30,8 +31,12 @@ module Api
                 end
 
                 def render401
-                  render :json => {:error => "UNAUTHORIZE 1"}.to_json, :status => 401
+                  render :json => {:error => "UNAUTHORIZE"}.to_json, :status => 401
                 end
+
+                def render404
+                  render :json => {:error => "TWITT NOT FOUND"}.to_json, :status => 204
+              end
         end
     end
 end
