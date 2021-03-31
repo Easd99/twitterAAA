@@ -10,7 +10,7 @@ module Api
               
                 def auth
                     authenticate_or_request_with_http_token do |token, _options|
-                      jwt_payload = JWT.decode(token.split(' ')[1], Rails.application.secrets.secret_key_base).first
+                      jwt_payload = JWT.decode(token.split(' ')[0], Rails.application.secrets.secret_key_base).first
                       @current_user_id = jwt_payload['id']
                     end
                 end
