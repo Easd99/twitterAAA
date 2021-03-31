@@ -3,20 +3,17 @@ module Api
         class ApiController < ActionController::Base
                 skip_before_action :verify_authenticity_token
                 respond_to :json
-                before_action :process_token
+                before_action :auth
                 rescue_from JWT::ExpiredSignature, JWT::VerificationError, JWT::DecodeError, with: :render401
 
                 private
               
-                def process_token
-                  if request.headers['Authorization'].present?
-                    begin
-                      jwt_payload = JWT.decode(request.headers['Authorization'].split(' ')[0], Rails.application.secrets.secret_key_base).first
-                      @current_user_id = jwt_payload['id']
+                def auth
+                    authenticate_or_request_with_http_token do |token, _options|
+                      jwt_payload = JWT.decode(token.split(' ')[1], Rails.application.secrets.secret_key_base).first
                       @current_user_id = jwt_payload['id']
                     end
                 end
-              end
               
 
                 def authenticate_user!(options = {})
