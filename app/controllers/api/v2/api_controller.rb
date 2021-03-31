@@ -7,14 +7,17 @@ module Api
                 rescue_from JWT::ExpiredSignature, JWT::VerificationError, JWT::DecodeError, with: :render401
 
                 private
-              def process_token
-                if request.headers['Authorization'].present?
-                  begin
-                    jwt_payload = JWT.decode(request.headers['Authorization'].split(' ')[0].remove('"'), Rails.application.secrets.secret_key_base).first
+              
+                def process_token
+                  if request.headers['Authorization'].present?
+                    begin
+                      jwt_payload = JWT.decode(request.headers['Authorization'].split(' ')[0], Rails.application.secrets.secret_key_base).first
+                      @current_user_id = jwt_payload['id']
                       @current_user_id = jwt_payload['id']
                     end
                 end
               end
+              
 
                 def authenticate_user!(options = {})
                   head :unauthorized unless signed_in?
@@ -30,7 +33,7 @@ module Api
                 end
 
                 def render401
-                  render :json => {:error => "UNAUTHORIZED"}.to_json, :status => 401
+                  render :json => {:error => "UNAUTHORIZED  1"}.to_json, :status => 401
                 end
         end
     end

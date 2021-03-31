@@ -15,7 +15,7 @@ module Api
 
             def show
                 if(current_user.blank?)
-                    render :json => {:error => "UNAUTHORIZED"}.to_json, :status => 401
+                    render :json => {:error => "UNAUTHORIZED 1"}.to_json, :status => 401
                 else
 
                     render json: @task   
@@ -28,7 +28,7 @@ module Api
 
             def create
                 if(current_user.blank?)
-                    render :json => {:error => "UNAUTHORIZED"}.to_json, :status => 404
+                    render :json => {:error => "UNAUTHORIZED 2"}.to_json, :status => 404
                 else
                     @task =Task.new(task_params)
                     @task.user_id = current_user.id
@@ -44,7 +44,7 @@ module Api
             
             def destroy
                 if(current_user.blank?)
-                    render :json => {:error => "UNAUTHORIZED"}.to_json, :status => 404
+                    render :json => {:error => "UNAUTHORIZED 3"}.to_json, :status => 404
                 else
                     if (@task.user_id == current_user.id)
                         @task.destroy
