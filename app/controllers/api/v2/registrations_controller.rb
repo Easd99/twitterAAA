@@ -7,8 +7,7 @@ module Api
             def create
                 build_resource(sign_up_params)
                 if (resource.save)
-                    token = resource.generate_jwt
-                    render :json => { "user" => resource , "token" => token} .to_json
+                    render :json => {"CREATED" => "USER CREATED PLEASE CHECK YOUR EMAIL", "user" => resource} .to_json
                 else
                     message_error = "COULD NOT BE REGISTERED"
                     render :json => {:error => message_error}.to_json, :status => 422
