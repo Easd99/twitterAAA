@@ -11,8 +11,14 @@ module Api
               
                 def auth
                     authenticate_or_request_with_http_token do |token, _options|
-                      jwt_payload = JWT.decode(token.split(' ')[0], Rails.application.secret_key_base).first
-                      @current_user_id = jwt_payload['id']
+                      @jwt_payload = JWT.decode(token.split(' ')[0], Rails.application.secret_key_base).first
+                      @id = @jwt_payload['id']
+                    end
+                    unless(User.jwt_revoked?(@jwt_payload, User.find(@id)))
+                      @current_user_id = @id
+                    else
+                      @current_user_id = nil
+                      render :json => {:error => "TOKEN EXPIRED"}.to_json, :status => 401
                     end
                 end
               
