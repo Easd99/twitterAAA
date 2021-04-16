@@ -20,8 +20,9 @@ Rails.application.routes.draw do
         post '/authentication_tokens_signup', to: "registrations#create"
         post '/authentication_tokens_login', to: "sessions#create" 
         delete '/authentication_tokens_logout', to: "sessions#destroy"
-        end
       end
+      get '/timeline', to: "timeline#index"
+    end  
   end
 
   
