@@ -4,7 +4,7 @@ module Api
             skip_before_action :verify_authenticity_token
             rescue_from JWT::ExpiredSignature, JWT::VerificationError, JWT::DecodeError, with: :render401
             respond_to :json
-            
+              
             def create
               user = User.authenticateShow(user_param_email)
               unless user.blank?
