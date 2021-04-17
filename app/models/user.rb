@@ -2,6 +2,12 @@ class User < ApplicationRecord
   acts_as_token_authenticatable
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  has_and_belongs_to_many :friendships,
+      class_name: "User", 
+      join_table:  :friendships, 
+      foreign_key: :user_id, 
+      association_foreign_key: :friend_user_id
+
   include Devise::JWT::RevocationStrategies::JTIMatcher
   
   def self.find_for_database_authentication(conditions={})

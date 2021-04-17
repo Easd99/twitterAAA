@@ -41,8 +41,8 @@ module Api
                 end
 
                 def render404
-                  render :json => {:error => "TWITT NOT FOUND"}.to_json, :status => 204
-              end
+                  render :json => {:error => "TWITT NOT FOUND"}.to_json, :status => 404
+                end
         end
     end
 end

@@ -21,7 +21,11 @@ Rails.application.routes.draw do
         post '/authentication_tokens_login', to: "sessions#create" 
         delete '/authentication_tokens_logout', to: "sessions#destroy"
       end
-      get '/timeline', to: "timeline#index"
+      get '/timeline', to: "timelines#index"
+      resources :friendships, only: [:index, :show, :create, :destroy]
+      resources :followers, only: [:index, :show, :create, :destroy]
+      resources :followings, only: [:index, :show, :create, :destroy]
+      #get '/friendship', to: "friendships#create"
     end  
   end
 
