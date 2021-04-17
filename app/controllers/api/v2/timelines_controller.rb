@@ -1,12 +1,17 @@
 module Api
     module V2
-        class TimelinesController < ActionController::Base
+        class TimelinesController < ApiController
+            
             #before_action :set_task, only: [:show]    
         #class TimelineController < ApiController
         
             def index
-                @tasks = Task.where(user_id: User.find(1).friendships)
-                render json: @tasks
+                if(current_user.blank?)
+                    render :json => {:error => "UNAUTHORIZED"}.to_json, :status => 401
+                  else 
+                    @tasks = Task.where(user_id: current_user.friendships)
+                    render json: @tasks
+                  end
                 #render json: User.first.friendships.
             end
 
