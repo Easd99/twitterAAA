@@ -1,6 +1,6 @@
 module Api
     module V2
-        class FollowersController < ActionController::Base
+        class FollowersController < ApiController
             before_action :set_user, only: [:show, :destroy]
 
             def index

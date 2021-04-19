@@ -9,7 +9,7 @@ module Api
                 if(current_user.blank?)
                     render :json => {:error => "UNAUTHORIZED"}.to_json, :status => 401
                   else 
-                    @tasks = Task.where(user_id: current_user.friendships)
+                    @tasks = Task.where(user_id: current_user.friendships).or(Task.where(user_id: current_user.id))
                     render json: @tasks
                   end
                 #render json: User.first.friendships.

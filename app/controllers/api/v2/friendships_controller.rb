@@ -5,11 +5,25 @@ module Api
             rescue_from ActiveRecord::RecordNotUnique, with: :render404
             before_action :set_user, only: [:show, :destroy]
             def index
+                @users = User.all
+                @nombres=[]
+                @users.each do |user|
+                    @idsYnames = []
+                    @idsYnames.push(user.id)
+                    @idsYnames.push(user.username)
+                    @nombres.push(@idsYnames)
+                end
+                render json: @nombres
 
+
+                # @users = User.all
+                # hash = Hash[@users.map { |l| [:id, l.id] }]
+                # render json: hash
             end
             def show
                 @friendship = Friendship.new(user_id: User.last.id, friend_user_id: @friend.id)
                 if @friendship.save
+                    FriendshipMailer.new_follower(User.last, @friend).deliver_now
                     render json: @friend.username
                 end
             end
