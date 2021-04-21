@@ -2,33 +2,33 @@
     <h1> Tweets index </h1>
 </header>
 <div>
-    <% @tasks.each  do |task|%>
+    <% @tweets.each  do |tweet|%>
             <div class="twets_contend">
                 <!-- Aqui se si mostrar el borde superior o no-->
-                <% if task.id == 1 %> 
+                <% if tweet.id == 1 %> 
                     <hr class="borde_first">      
                 <%end%>
                 <!-- Aqui se muestra el nombre -->
                 <div class="twets_bar_sup">
-                <label>  <b> <%= task.user.name %>  </b> </label> <label class="der"> <%= task.user.username %> </label>
+                <label>  <b> <%= tweet.user.name %>  </b> </label> <label class="der"> <%= tweet.user.username %> </label>
                 </div>
                 <!-- Aqui se muestra la descripcion -->
                 <div class="twets_bar_cen">
-                    <%=task.description %>
+                    <%=tweet.description %>
                 </div>
                 <!-- Aqui se muestra la informacion del tweet y si eres el dueno de el-->
                 <!-- lo puedes borrar  -->
                 <div class="twets_bar_inf">
-                    <%= link_to('Detalles', task_path(task.id), class:"rst",) %>
-                    <% if current_user.id == task.user_id %>
-                        <%= link_to('Delete', task_path(task.id), class:"rst", method: 'delete', data: {confirm: "Are you SURE?"}) %>
+                    <%= link_to('Detalles', tweet_path(tweet.id), class:"rst",) %>
+                    <% if current_user.id == tweet.user_id %>
+                        <%= link_to('Delete', tweet_path(tweet.id), class:"rst", method: 'delete', data: {confirm: "Are you SURE?"}) %>
                     <%end%>
                 </div>
                 <hr  class="borde">
             </div>
     <%end%>
 </div>
-<%= link_to('New Twitt', new_task_path , class:"rst")%>
+<%= link_to('New Twitt', new_tweet_path , class:"rst")%>
 
 
 

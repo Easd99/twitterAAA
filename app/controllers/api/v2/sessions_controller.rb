@@ -5,7 +5,7 @@ module Api
             rescue_from JWT::ExpiredSignature, JWT::VerificationError, JWT::DecodeError, with: :render401
             respond_to :json
               
-            def create
+            def index
               user = User.authenticateShow(user_param_email)
               unless user.blank?
                 if (user.confirmed?)

@@ -1,4 +1,4 @@
-class Task < ApplicationRecord
+class Tweet < ApplicationRecord
 
 belongs_to :user
 

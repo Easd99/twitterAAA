@@ -21,7 +21,7 @@ module Api
                 # render json: hash
             end
             def show
-                @friendship = Friendship.new(user_id: User.last.id, friend_user_id: @friend.id)
+                @friendship = Friendship.new(user_id: User.find(2).id, friend_user_id: @friend.id)
                 if @friendship.save
                     FriendshipMailer.new_follower(User.last, @friend).deliver_now
                     render json: @friend.username

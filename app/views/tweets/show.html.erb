@@ -1,0 +1,18 @@
+<h3>Detalles</h3>
+<div>
+    <div class="twets_contend">
+        <div class="twets_bar_sup">
+           <label>  <b> <%= @tweet.user.name %>  </b> </label> <label class="der"> <%= @tweet.user.username %> </label>
+        </div>
+        <div class="twets_bar_cen">
+            <%= @tweet.id %>   - 
+            <%= @tweet.description %>
+        </div>
+        <div class="twets_bar_inf">
+            <% if current_user.id == @tweet.user_id %>
+                <%= link_to('Delete', tweet_path(@tweet.id), class:"rst", method: 'delete', data: {confirm: "Are you SURE?"})  %>
+            <%end%>
+        </div>
+    </div>
+ </div>
+<%= link_to('View all Twitts', tweets_path, class: "rst") %>
