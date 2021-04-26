@@ -15,7 +15,7 @@ class User < ApplicationRecord
   end
 
   validates :username, uniqueness: true
-  has_many :tasks
+  has_many :tweets
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable,
          :jwt_authenticatable, jwt_revocation_strategy: self
@@ -31,7 +31,7 @@ class User < ApplicationRecord
   end
 
 
-  def generate_jwt(jti)
+  def generate_jwt()
     JWT.encode({id: id, exp: 30.days.from_now.to_i, jti: jti}, Rails.application.secret_key_base)
   end
          

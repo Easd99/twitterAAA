@@ -6,20 +6,20 @@ Rails.application.routes.draw do
  
   get '/confirmationsuccessfull', to: 'home#successfull'
   root  'home#index'
-  get '/index', to: 'tasks#index'
-  resources :tasks
+  get '/index', to: 'tweets#index'
+  resources :tweets
 
   namespace :api do
     namespace :v1 do
-      resources :tasks, only: [:index, :show, :create, :destroy]
+      resources :tweets, only: [:index, :show, :create, :destroy]
       resources :users, only: [:create, :index]
     end
     namespace :v2 do
-      resources :tasks, only: [:index, :show, :create, :destroy]
+      resources :tweets, only: [:index, :show, :create, :destroy]
       devise_scope :user do
-        post '/authentication_tokens_signup', to: "registrations#create"
-        post '/authentication_tokens_login', to: "sessions#create" 
-        delete '/authentication_tokens_logout', to: "sessions#destroy"
+        post '/users', to: "registrations#create"
+        get '/users', to: "sessions#index" 
+        delete '/users', to: "sessions#destroy"
       end
       get '/timeline', to: "timelines#index"
       resources :friendships, only: [:index, :show, :create, :destroy]
@@ -30,8 +30,5 @@ Rails.application.routes.draw do
   end
 
   
-
-  #get '/confirmationsuccessfull', to: 'tasks#index'
-  #resource: tasks
   
 end

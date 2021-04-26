@@ -1,14 +1,14 @@
 module Api
     module V2
-        class TasksController < ApiController
-            before_action :set_task, only: [:show, :destroy]
+        class TweetsController < ApiController
+            before_action :set_tweet, only: [:show, :destroy]
                 
             def index
                 if(current_user.blank?)
                     render :json => {:error => "UNAUTHORIZED"}.to_json, :status => 401
                   else  
-                    @tasks = Task.all
-                    render json: @tasks
+                    @tweets = Tweet.all
+                    render json: @tweets
                 end
             end
 
@@ -17,22 +17,22 @@ module Api
                     render :json => {:error => "UNAUTHORIZED"}.to_json, :status => 401
                 else
 
-                    render json: @task   
+                    render json: @tweet   
                 end 
             end
             
             def new
-                @task = Task.new
+                @tweet = Tweet.new
             end 
 
             def create
                 if(current_user.blank?)
                     render :json => {:error => "UNAUTHORIZED"}.to_json, :status => 404
                 else
-                    @task =Task.new(task_params)
-                    @task.user_id = current_user.id
-                    if @task.save
-                        render json: @task, status: :ok
+                    @tweet =Tweet.new(tweet_params)
+                    @tweet.user_id = current_user.id
+                    if @tweet.save
+                        render json: @tweet, status: :ok
                     else
                         message_error = "CAN'T SAVE TWEET"
                         render :json => {:error => message_error}.to_json, :status => 400
@@ -45,8 +45,8 @@ module Api
                 if(current_user.blank?)
                     render :json => {:error => "UNAUTHORIZED"}.to_json, :status => 404
                 else
-                    if (@task.user_id == current_user.id)
-                        @task.destroy
+                    if (@tweet.user_id == current_user.id)
+                        @tweet.destroy
                         render :json => {:error => "NO CONTENT"}.to_json, :status => 204
                     else
                         render :json => {:error => "CAN'T DELETE THIS TWEET"}.to_json, :status => 404
@@ -56,11 +56,11 @@ module Api
             end
         
             private
-            def set_task
-                @task=Task.find(params[:id])
+            def set_tweet
+                @tweet=Tweet.find(params[:id])
             end
-            def task_params
-                params.require(:task).permit(:description, :user_id)
+            def tweet_params
+                params.require(:tweet).permit(:description, :user_id)
             end
         end
     end

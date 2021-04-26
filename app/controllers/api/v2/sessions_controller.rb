@@ -5,13 +5,13 @@ module Api
             rescue_from JWT::ExpiredSignature, JWT::VerificationError, JWT::DecodeError, with: :render401
             respond_to :json
               
-            def create
+            def index
               user = User.authenticateShow(user_param_email)
               unless user.blank?
                 if (user.confirmed?)
                   if user.valid_password?(user_param_pass)
                     user.update_column(:jti, User.generate_jti)
-                    token = user.generate_jwt(user.jti)
+                    token = user.generate_jwt()
                     render :json => { "user" => user , "token" => token} .to_json
                   else
                     render :json => {:error => "USER AND/OR PASSWORD INCORRECT"}.to_json, :status => 404
