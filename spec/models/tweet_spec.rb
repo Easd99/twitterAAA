@@ -9,6 +9,9 @@ RSpec.describe Tweet, type: :model do
     it { should validate_length_of(:description).is_at_most(280) }
   end
 
+  describe 'associations' do
+    it { should belong_to(:user)}
+  end
 
 end
 
