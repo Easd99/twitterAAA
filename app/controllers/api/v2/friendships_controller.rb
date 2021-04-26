@@ -21,7 +21,7 @@ module Api
                 # render json: hash
             end
             def show
-                @friendship = Friendship.new(user_id: User.last.id, friend_user_id: @friend.id)
+                @friendship = Friendship.new(user_id: User.find(2).id, friend_user_id: @friend.id)
                 if @friendship.save
                     FriendshipMailer.new_follower(User.last, @friend).deliver_now
                     render json: @friend.username
@@ -31,7 +31,7 @@ module Api
 
             end
             def destroy
-                Friendship.find_friendship(User.first.id, @friend.id).delete_all
+                Friendship.find_friendship(User.find(2).id, @friend.id).delete_all
                 render :json => {:error => "NO CONTENT"}.to_json, :status => 204
             end
 
