@@ -6,7 +6,6 @@ module Api
             def index
             end
             def show
-                
                 @followers = @user.friendships
                 @nombres=[]
                 @followers.each do |follower|
