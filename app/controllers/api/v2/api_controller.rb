@@ -5,20 +5,21 @@ module Api
                 respond_to :json
                 before_action :auth
                 rescue_from JWT::ExpiredSignature, JWT::VerificationError, JWT::DecodeError, with: :render401
-                rescue_from ActiveRecord::RecordNotFound, with: :render404
+                #rescue_from ActiveRecord::RecordNotFound, with: :render404
 
                 private
               
                 def auth
+                    @sw = 1
                     authenticate_or_request_with_http_token do |token, _options|
                       @jwt_payload = JWT.decode(token.split(' ')[0], Rails.application.secret_key_base).first
                       @id = @jwt_payload['id']
-                    end
-                    unless(User.jwt_revoked?(@jwt_payload, User.find(@id)))
-                      @current_user_id = @id
-                    else
-                      @current_user_id = nil
-                      render :json => {:error => "TOKEN EXPIRED"}.to_json, :status => 401
+                      unless(User.jwt_revoked?(@jwt_payload, User.find(@id)))
+                        @current_user_id = @id
+                      else
+                        @current_user_id = nil
+                        render :json => {:error => "TOKEN EXPIRED"}.to_json, :status => 401
+                      end
                     end
                 end
               
@@ -37,11 +38,8 @@ module Api
                 end
 
                 def render401
+                  @sw = 2
                   render :json => {:error => "UNAUTHORIZE"}.to_json, :status => 401
-                end
-
-                def render404
-                  render :json => {:error => "TWITT NOT FOUND"}.to_json, :status => 404
                 end
         end
     end
