@@ -14,24 +14,42 @@ RSpec.describe TweetsController, "#create" do
         it "should redirect user to Tweet Index" do
             expect(subject).to  redirect_to(tweets_path)
         end
+        it "should less than 280 " do
+            expect(Tweet.last.description.length).to be <= 280
+        end
+        it "should have a user " do
+            expect(Tweet.last.description).not_to be_falsy
+        end
     end
+end
 
-    # context "When a tweet exist" do
-    #     let(:user) {create(:user)}
-    #     before do
-    #         sign_in(user)
-    #         get :show, params: { id: tweet.id} 
-    #     end
-        
-    #     it "should return HTTP success code" do
-    #         expect(response).to have_http_status(:success)
-    #     end
+RSpec.describe TweetsController, "#destroy" do
+    let(:user) {create(:user, :confirmed)}
+    let(:tweet) {create(:tweet, user: user)}
+    context "When a tweet exist" do
+        before do            
+            sign_in(user)
+            delete :destroy, params: { id: tweet.id} 
+        end
+        it "should return HTTP no contend code" do
+            expect(response).to have_http_status(302)
+            
+        end
+    end
+end
 
-    #     it "should return Tweet in JSON body" do
-    #         json_responde = JSON.parse(response.body)
-    #         expect(json_responde.keys).to  match_array(["id","description","user_id","created_at","updated_at"])
-    #     end
-    # end
-
-
+RSpec.describe TweetsController, "#index" do
+    let(:user) {create(:user, :confirmed)}
+    context "Index" do
+        before do
+            sign_in(user)
+            10.times do |i|
+                create(:tweet, user: user)
+            end            
+            get :index
+        end
+        it "should return HTTP success code" do
+            expect(response).to have_http_status(:success)
+        end
+     end
 end
