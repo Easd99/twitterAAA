@@ -6,13 +6,12 @@ module Api
             def index
             end
             def show
-                @followers = @user.friendships
-                @nombres=[]
-                @followers.each do |follower|
-                    @nombres.push(follower.username)
+                followings = @user.friendships
+                followingslist=[]
+                followings.each do |following|
+                    followingslist.push({"id" => following.id, "username" => following.username})
                 end
-                render json: @nombres
-                
+                render json: followingslist
             end
             def create
             end
