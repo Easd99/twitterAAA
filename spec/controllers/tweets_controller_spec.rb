@@ -15,4 +15,23 @@ RSpec.describe TweetsController, "#create" do
             expect(subject).to  redirect_to(tweets_path)
         end
     end
+
+    context "When a tweet exist" do
+        let(:user) {create(:user)}
+        before do
+            sign_in(user)
+            get :show, params: { id: tweet.id} 
+        end
+        
+        it "should return HTTP success code" do
+            expect(response).to have_http_status(:success)
+        end
+
+        it "should return Tweet in JSON body" do
+            json_responde = JSON.parse(response.body)
+            expect(json_responde.keys).to  match_array(["id","description","user_id","created_at","updated_at"])
+        end
+    end
+
+
 end
