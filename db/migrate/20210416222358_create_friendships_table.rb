@@ -9,3 +9,4 @@ class CreateFriendshipsTable < ActiveRecord::Migration[6.1]
       add_index(:friendships, [:friend_user_id, :user_id], :unique => true)
     end
 end
+#index 2 poner al revez

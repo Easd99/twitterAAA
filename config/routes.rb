@@ -22,6 +22,7 @@ Rails.application.routes.draw do
         delete '/users', to: "sessions#destroy"
       end
       get '/timeline', to: "timelines#index"
+      post '/friendships/:id', to: "friendships#seguir"
       resources :friendships, only: [:index, :show, :create, :destroy]
       resources :followers, only: [:index, :show, :create, :destroy]
       resources :followings, only: [:index, :show, :create, :destroy]

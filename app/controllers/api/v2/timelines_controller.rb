@@ -2,12 +2,12 @@ module Api
     module V2
         class TimelinesController < ApiController
             
-            #before_action :set_tweet, only: [:show]    
+        #before_action :set_tweet, only: [:show]    
         #class TimelineController < ApiController
         
             def index
                 @tweets = Tweet.where(user_id: current_user.friendships).or(Tweet.where(user_id: current_user.id))
-                render json: @tweets
+                render json: {timeline: @tweets}
                 #render json: User.first.friendships.
             end
 

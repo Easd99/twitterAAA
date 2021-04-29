@@ -43,6 +43,7 @@ module Api
                 rescue ActiveRecord::RecordNotFound
                 render :json => {:error => "TWITT NOT FOUND"}.to_json, :status => 404
             end
+            
             def tweet_params
                 params.require(:tweet).permit(:description, :user_id)
             end
