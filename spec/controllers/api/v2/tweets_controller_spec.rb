@@ -49,6 +49,7 @@ RSpec.describe Api::V2::TweetsController, "#index" do
         end
         it "should return Tweet in JSON body" do
             json_response = JSON.parse(response.body)
+            
             expect(json_response.first.keys).to  match_array(["id","description","user_id","created_at","updated_at"])
         end
     end

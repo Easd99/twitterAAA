@@ -1,7 +1,7 @@
 module Api
     module V2
         class FollowingsController < ApiController
-            before_action :set_user, only: [:show, :destroy]
+            # before_action :set_user, only: [:show, :destroy]
 
             def index
                 followings = current_user.friendships
@@ -19,10 +19,10 @@ module Api
             #     end
             #     render json: followingslist
             # end
-            def create
-            end
-            def destroy
-            end
+            # def create
+            # end
+            # def destroy
+            # end
 
             private
             # def set_user
