@@ -17,6 +17,6 @@ end
 
 
 
-RSpec.describe Tweet, type: :model do
-  pending "Pending Example"
-end
+# RSpec.describe Tweet, type: :model do
+#   pending "Pending Example"
+# end

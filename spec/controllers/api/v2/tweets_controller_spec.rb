@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Api::V2::TweetsController, "#show" do
-    let(:user) {create(:user, :confirmed)}
-    let(:tweet) {create(:tweet, user: user)}
     #let(:user2) {create(:user)}
     context "When a tweet exist" do
+        let(:user) {create(:user, :confirmed)}
+        let(:tweet) {create(:tweet, user: user)}
         before do
             token = user.generate_jwt(user.jti)
             request.headers["Authorization"] = "Bearer #{token}"
@@ -19,6 +19,7 @@ RSpec.describe Api::V2::TweetsController, "#show" do
         end
     end
     context "When a tweet no exist" do
+        let(:user) {create(:user, :confirmed)}
         before do
             token = user.generate_jwt(user.jti)
             request.headers["Authorization"] = "Bearer #{token}"
@@ -48,15 +49,16 @@ RSpec.describe Api::V2::TweetsController, "#index" do
         end
         it "should return Tweet in JSON body" do
             json_response = JSON.parse(response.body)
+            byebug
             expect(json_response.first.keys).to  match_array(["id","description","user_id","created_at","updated_at"])
         end
     end
 end
 
 RSpec.describe Api::V2::TweetsController, "#destroy" do
-    let(:user) {create(:user, :confirmed)}
-    let(:tweet) {create(:tweet, user: user)}
-    context "When a tweet exist" do
+    context "When a tweet exist and is mine" do
+        let(:user) {create(:user, :confirmed)}
+        let(:tweet) {create(:tweet, user: user)}
         before do
             token = user.generate_jwt(user.jti)
             request.headers["Authorization"] = "Bearer #{token}"
@@ -64,7 +66,36 @@ RSpec.describe Api::V2::TweetsController, "#destroy" do
         end
         it "should return HTTP no contend code" do
             expect(response).to have_http_status(204)
-            
+        end
+        it "should be equal id and tweet_user id" do
+            expect(user.id).to eq(tweet.user_id)
+        end
+    end
+    context "When a tweet no exist" do
+        let(:user) {create(:user, :confirmed)}
+        before do
+            token = user.generate_jwt(user.jti)
+            request.headers["Authorization"] = "Bearer #{token}"
+            delete :destroy, params: { id: 100} 
+        end
+        it "should return HTTP invalid code" do
+            expect(response).to have_http_status(404)
+        end
+    end
+    context "When a tweet isn't mine" do
+        let(:user) {create(:user, :confirmed)}
+        let(:user2) {create(:user, :confirmed)}
+        let(:tweet) {create(:tweet, user: user2)}
+        before do
+            token = user.generate_jwt(user.jti)
+            request.headers["Authorization"] = "Bearer #{token}"
+            delete :destroy, params: { id: tweet.id} 
+        end
+        it "should return HTTP invalid code" do
+            expect(response).to have_http_status(404)
+        end
+        it "not to be equal id and tweet_user id" do
+            expect(user.id).not_to eq(tweet.user_id)
         end
     end
 end
@@ -76,12 +107,11 @@ RSpec.describe Api::V2::TweetsController, "#create" do
         before do
             token = user.generate_jwt(user.jti)
             request.headers["Authorization"] = "Bearer #{token}"
-            post :create, params: {tweet: {description: "Test implementation", user_id: 1} }
+            post :create, params: {tweet: {description: "Test implementation", user_id: user.id} }
         end
         it "should be saved " do
             json_response = JSON.parse(response.body)
             expect(json_response.values[1]).to eq("Test implementation")
-           
         end
         it "should return HTTP success code" do
             expect(response).to have_http_status(:success)
@@ -99,4 +129,22 @@ RSpec.describe Api::V2::TweetsController, "#create" do
             expect(json_response.values[2]).not_to be_falsy
         end
     end
-end    
+
+    context "When a tweet have more than 280 words" do
+        let(:user) {create(:user, :confirmed)}
+        before do
+            text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                    Praesent non ex at justo faucibus sollicitudin. Donec nec erat et est hendrerit aliquet.
+                    Donec erat turpis, bibendum ac nunc eu, hendrerit ultricies massa. Curabitur condimentum 
+                    leo in massa commodo interdum vel molestie in."
+            token = user.generate_jwt(user.jti)
+            request.headers["Authorization"] = "Bearer #{token}"
+            post :create, params: {tweet: {description: text, user_id: user.id} }
+        end
+        it "should less than 280 " do
+            expect(response).to have_http_status(400)
+        end
+
+    end
+
+end
