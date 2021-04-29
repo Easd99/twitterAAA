@@ -15,5 +15,5 @@ RSpec.describe TweetsController, "#create" do
             expect(subject).to  redirect_to(tweets_path)
         end
     end
-    
+ 
 end
