@@ -10,7 +10,6 @@ module Api
                 private
               
                 def auth
-                    @sw = 1
                     authenticate_or_request_with_http_token do |token, _options|
                       @jwt_payload = JWT.decode(token.split(' ')[0], Rails.application.secret_key_base).first
                       @id = @jwt_payload['id']
@@ -38,7 +37,6 @@ module Api
                 end
 
                 def render401
-                  @sw = 2
                   render :json => {:error => "UNAUTHORIZE"}.to_json, :status => 401
                 end
                 def render404

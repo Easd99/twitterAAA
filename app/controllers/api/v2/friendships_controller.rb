@@ -24,7 +24,7 @@ module Api
                     if friendship.save
                         FriendshipMailer.new_follower(current_user, @friend).deliver_now
                         friendhash = {"id" => @friend.id, "username" => @friend.username}
-                        render json: friendhash
+                        render json: {follow: friendhash}
                     end
                 else
                     render :json => {:error => "NO TE PUEDES SEGUIR A TI "}.to_json, :status => 404
@@ -42,7 +42,10 @@ module Api
             private
             def set_user
                 @friend = User.find(params[:id])
+                rescue ActiveRecord::RecordNotFound
+                render :json => {:error => "User not found"}.to_json, :status => 404
             end
+
             def render404
                 render :json => {:error => "YA LO SIGUES"}.to_json, :status => 404
             end

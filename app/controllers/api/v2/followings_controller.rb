@@ -11,23 +11,23 @@ module Api
                 end
                 render json: followingslist
             end
-            def show
-                followings = @user.friendships
-                followingslist=[]
-                followings.each do |following|
-                    followingslist.push({"id" => following.id, "username" => following.username})
-                end
-                render json: followingslist
-            end
+            # def show
+            #     followings = @user.friendships
+            #     followingslist=[]
+            #     followings.each do |following|
+            #         followingslist.push({"id" => following.id, "username" => following.username})
+            #     end
+            #     render json: followingslist
+            # end
             def create
             end
             def destroy
             end
 
             private
-            def set_user
-                @user = User.find(params[:id])
-            end
+            # def set_user
+            #     @user = User.find(params[:id])
+            # end
         end
     end
 end

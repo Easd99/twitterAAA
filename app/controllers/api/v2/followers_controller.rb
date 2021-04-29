@@ -12,7 +12,7 @@ module Api
                         followerslist.push({"id" => user.id, "username" => user.username})
                     end
                 end
-                render json: followerslist
+                render json: {followers: followerslist}
             end
             def show
                 followers = Friendship.where(friend_user_id: @user.id)
