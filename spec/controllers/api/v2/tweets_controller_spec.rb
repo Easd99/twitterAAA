@@ -73,31 +73,3 @@ end
 
 
 
-RSpec.describe Api::V2::TweetsController, "#create" do
-
-    context "When a tweet is saved with valid params with user logged in" do
-        let(:user) {create(:user, :confirmed)}
-        before do
-            token = user.generate_jwt(user.jti)
-            request.headers["Authorization"] = "Bearer #{token}"
-            post :create, params: {tweet: {description: "Test implementation", user_id: 1} }
-        end
-        it "should be saved " do
-            expect(Tweet.last.description).to eq("Test implementation")
-        end
-        it "should return HTTP success code" do
-            expect(response).to have_http_status(:success)
-        end
-        it "should return Tweet in JSON body" do
-            json_response = JSON.parse(response.body)
-            expect(json_response.keys).to  match_array(["id","description","user_id","created_at","updated_at"])
-        end
-        it "should less than 280 " do
-            json_response = JSON.parse(response.body)
-            byebug
-            
-            expect(json_response.description.length).to be <= 280
-
-        end
-    end
-end
