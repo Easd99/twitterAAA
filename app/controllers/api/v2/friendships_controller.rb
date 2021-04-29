@@ -2,7 +2,7 @@ module Api
     module V2
         class FriendshipsController < ApiController
             rescue_from ActiveRecord::RecordNotUnique, with: :render404
-            before_action :set_user, only: [:show, :destroy]
+            before_action :set_user, only: [:show, :destroy,:seguir]
             def index
                 users = User.all
                 userslist=[]
@@ -14,19 +14,23 @@ module Api
                 # hash = Hash[@users.map { |l| [:id, l.id] }]
                 # render json: hash
             end
+            
             def show
+            end
+
+            def seguir
                 unless current_user.id == @friend.id
-                friendship = Friendship.new(user_id: current_user.id, friend_user_id: @friend.id)
-                if friendship.save
-                    FriendshipMailer.new_follower(current_user, @friend).deliver_now
-                    friendhash = {"id" => @friend.id, "username" => @friend.username}
-                    render json: friendhash
-                end
+                    friendship = Friendship.new(user_id: current_user.id, friend_user_id: @friend.id)
+                    if friendship.save
+                        FriendshipMailer.new_follower(current_user, @friend).deliver_now
+                        friendhash = {"id" => @friend.id, "username" => @friend.username}
+                        render json: friendhash
+                    end
                 else
                     render :json => {:error => "NO TE PUEDES SEGUIR A TI "}.to_json, :status => 404
                 end
-
             end
+
             def create
 
             end

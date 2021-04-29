@@ -4,6 +4,12 @@ module Api
             before_action :set_user, only: [:show, :destroy]
 
             def index
+                followings = current_user.friendships
+                followingslist=[]
+                followings.each do |following|
+                    followingslist.push({"id" => following.id, "username" => following.username})
+                end
+                render json: followingslist
             end
             def show
                 followings = @user.friendships
