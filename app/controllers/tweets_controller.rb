@@ -1,7 +1,8 @@
 class TweetsController < ApplicationController
     
     before_action :set_tweet, only: [:show, :destroy]
-
+    before_action :authenticate_user!
+    
     def index
         #@tweets = Tweet.where(user_id: current_user.id)
         @tweets = Tweet.all
@@ -24,7 +25,7 @@ class TweetsController < ApplicationController
     def destroy
         @tweet.destroy
         redirect_to tweets_path, notice: "Tweet eliminado"
-      end
+    end
     
     private
     
