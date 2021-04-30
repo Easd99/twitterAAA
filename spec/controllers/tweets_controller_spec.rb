@@ -33,7 +33,6 @@ RSpec.describe TweetsController, "#create" do
             post :create, params: {tweet: {description: text, user_id: 1} }
         end
         it "should redirect user to Tweet Index" do
-            byebug
             expect(subject).to  redirect_to(new_tweet_path)
         end
     end
