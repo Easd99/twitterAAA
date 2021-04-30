@@ -7,8 +7,8 @@ module Api
                 followers = Friendship.where(friend_user_id: current_user.id)
                 followerslist=[]
                 followers.each do |follower|
-                    @users = User.where(id: follower.user_id)
-                    @users.each do |user|
+                    users = User.where(id: follower.user_id)
+                    users.each do |user|
                         followerslist.push({"id" => user.id, "username" => user.username})
                     end
                 end
@@ -26,10 +26,10 @@ module Api
             #     render json: followerslist
             # end
 
-            def create
-            end
-            def destroy
-            end
+            # def create
+            # end
+            # def destroy
+            # end
 
             private
             # def set_user

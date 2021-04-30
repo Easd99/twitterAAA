@@ -29,7 +29,22 @@ RSpec.describe Api::V2::TweetsController, "#show" do
             expect(response).to have_http_status(404)
         end
     end
-
+    context "Token invalido" do
+        let(:userA) {create(:user, :confirmed)} 
+        before do          
+            token = userA.generate_jwt(userA.jti)
+            jwt_payload = JWT.decode(token.split(' ')[0], Rails.application.secret_key_base).first
+            User.revoke_jwt(jwt_payload, User.find(userA.id))
+            request.headers["Authorization"] = "Bearer #{token}"
+            get :index
+        end
+        it "should validate user confirmed" do
+            expect(userA.confirmed?).to be true
+        end
+        it "should return HTTP success code" do
+            expect(response).to have_http_status(401)
+        end
+    end
 
 end
 
@@ -51,6 +66,22 @@ RSpec.describe Api::V2::TweetsController, "#index" do
             json_response = JSON.parse(response.body)
             
             expect(json_response.first.keys).to  match_array(["id","description","user_id","created_at","updated_at"])
+        end
+    end
+    context "Token invalido" do
+        let(:userA) {create(:user, :confirmed)} 
+        before do          
+            token = userA.generate_jwt(userA.jti)
+            jwt_payload = JWT.decode(token.split(' ')[0], Rails.application.secret_key_base).first
+            User.revoke_jwt(jwt_payload, User.find(userA.id))
+            request.headers["Authorization"] = "Bearer #{token}"
+            get :index
+        end
+        it "should validate user confirmed" do
+            expect(userA.confirmed?).to be true
+        end
+        it "should return HTTP success code" do
+            expect(response).to have_http_status(401)
         end
     end
 end
@@ -96,6 +127,22 @@ RSpec.describe Api::V2::TweetsController, "#destroy" do
         end
         it "not to be equal id and tweet_user id" do
             expect(user.id).not_to eq(tweet.user_id)
+        end
+    end
+    context "Token invalido" do
+        let(:userA) {create(:user, :confirmed)} 
+        before do          
+            token = userA.generate_jwt(userA.jti)
+            jwt_payload = JWT.decode(token.split(' ')[0], Rails.application.secret_key_base).first
+            User.revoke_jwt(jwt_payload, User.find(userA.id))
+            request.headers["Authorization"] = "Bearer #{token}"
+            get :index
+        end
+        it "should validate user confirmed" do
+            expect(userA.confirmed?).to be true
+        end
+        it "should return HTTP success code" do
+            expect(response).to have_http_status(401)
         end
     end
 end
@@ -144,7 +191,22 @@ RSpec.describe Api::V2::TweetsController, "#create" do
         it "should less than 280 " do
             expect(response).to have_http_status(400)
         end
-
+    end
+    context "Token invalido" do
+        let(:userA) {create(:user, :confirmed)} 
+        before do          
+            token = userA.generate_jwt(userA.jti)
+            jwt_payload = JWT.decode(token.split(' ')[0], Rails.application.secret_key_base).first
+            User.revoke_jwt(jwt_payload, User.find(userA.id))
+            request.headers["Authorization"] = "Bearer #{token}"
+            get :index
+        end
+        it "should validate user confirmed" do
+            expect(userA.confirmed?).to be true
+        end
+        it "should return HTTP success code" do
+            expect(response).to have_http_status(401)
+        end
     end
 
 end    

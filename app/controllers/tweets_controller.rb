@@ -10,17 +10,13 @@ class TweetsController < ApplicationController
     def show        
     end
 
-    def new
-        @tweet = Tweet.new
-    end
-
     def create
         @tweet =Tweet.new(tweet_params)
         @tweet.user_id = current_user.id
         if @tweet.save
             redirect_to tweets_path #, notice: "Enviado"
         else
-            render :new
+            redirect_to new_tweet_path
         end
     end
 

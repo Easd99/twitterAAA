@@ -1,10 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe Api::V2::FollowersController, "#index" do
-    let(:userA) {create(:user, :confirmed)}    
+RSpec.describe Api::V2::FollowersController, "#index" do   
     context "Index" do
+        let(:userA) {create(:user, :confirmed)} 
+        let(:userB) {create(:user, :confirmed)} 
+
         before do          
             token = userA.generate_jwt(userA.jti)
+            Friendship.new(user_id: userB.id, friend_user_id: userA.id).save
             request.headers["Authorization"] = "Bearer #{token}"
             get :index
         end
@@ -18,5 +21,6 @@ RSpec.describe Api::V2::FollowersController, "#index" do
             json_response = JSON.parse(response.body)
             expect(json_response.keys).to  match_array(["followers"])
         end
+
     end
 end

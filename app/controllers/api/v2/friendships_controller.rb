@@ -9,7 +9,7 @@ module Api
                 users.each do |user|
                     userslist.push({"id" => user.id, "username" => user.username})
                 end
-                render json: userslist
+                render json: {userlist: userslist}
                 # @users = User.all
                 # hash = Hash[@users.map { |l| [:id, l.id] }]
                 # render json: hash

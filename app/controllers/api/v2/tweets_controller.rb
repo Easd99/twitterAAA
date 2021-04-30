@@ -12,9 +12,9 @@ module Api
                 render json: @tweet   
             end
             
-            def new
-                @tweet = Tweet.new
-            end 
+            # def new
+            #     @tweet = Tweet.new
+            # end 
 
             def create
                 @tweet =Tweet.new(tweet_params)

@@ -9,7 +9,7 @@ module Api
                 followings.each do |following|
                     followingslist.push({"id" => following.id, "username" => following.username})
                 end
-                render json: followingslist
+                render json: {followings: followingslist}
             end
             # def show
             #     followings = @user.friendships
