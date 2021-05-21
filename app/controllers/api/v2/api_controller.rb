@@ -13,12 +13,12 @@ module Api
                     authenticate_or_request_with_http_token do |token, _options|
                       @jwt_payload = JWT.decode(token.split(' ')[0], Rails.application.secret_key_base).first
                       @id = @jwt_payload['id']
-                    end
-                    unless(User.jwt_revoked?(@jwt_payload, User.find(@id)))
-                      @current_user_id = @id
-                    else
-                      @current_user_id = nil
-                      render :json => {:error => "TOKEN EXPIRED"}.to_json, :status => 401
+                      unless(User.jwt_revoked?(@jwt_payload, User.find(@id)))
+                        @current_user_id = @id
+                      else
+                        @current_user_id = nil
+                        render :json => {:error => "TOKEN EXPIRED"}.to_json, :status => 401
+                      end
                     end
                 end
               
@@ -39,10 +39,9 @@ module Api
                 def render401
                   render :json => {:error => "UNAUTHORIZE"}.to_json, :status => 401
                 end
-
                 def render404
-                  render :json => {:error => "TWITT NOT FOUND"}.to_json, :status => 204
-              end
+                  render :json => {:error => "NO ENCONTRADO"}.to_json, :status => 404
+                end
         end
     end
 end

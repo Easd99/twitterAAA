@@ -4,22 +4,23 @@ module Api
             skip_before_action :verify_authenticity_token
             rescue_from JWT::ExpiredSignature, JWT::VerificationError, JWT::DecodeError, with: :render401
             respond_to :json
-            
-            def create
+              
+            def index
               user = User.authenticateShow(user_param_email)
               unless user.blank?
                 if (user.confirmed?)
                   if user.valid_password?(user_param_pass)
                     user.update_column(:jti, User.generate_jti)
                     token = user.generate_jwt(user.jti)
-                    render :json => { "user" => user , "token" => token} .to_json
+                    render :json => {"token" => token} .to_json
                   else
-                    render :json => {:error => "USER AND/OR PASSWORD INCORRECT"}.to_json, :status => 404
+                    render :json => {:error => "User and/or password incorrect"}.to_json, :status => 404
                   end
                 else
                   render :json => {:error => "NO CONFIRMADO"}.to_json, :status => 404
                 end
-
+              else
+                render :json => {:error => "User and/or password incorrect"}.to_json, :status => 404
               end
             end
 

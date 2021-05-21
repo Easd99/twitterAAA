@@ -1,7 +1,7 @@
-<h2>Nuevo Task</h2>
+<h2>Nuevo tweet</h2>
 <div>
     <div class="post">
-            <%= form_with(model: Task, local: true) do |form|%>
+            <%= form_with(model: Tweet, local: true) do |form|%>
                 <div>
                     <%= form.label :description %>
                     <%= form.text_area :description, size: "70x5", class: "text_area_task" %>
@@ -12,5 +12,5 @@
 </div>
 
 
-<%= link_to('Ver Twitts', tasks_path, class:"rst")%>
+<%= link_to('Ver Twitts', tweets_path, class:"rst")%>
 
