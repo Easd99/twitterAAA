@@ -22,7 +22,10 @@ Rails.application.routes.draw do
       end
       get '/timeline', to: "timelines#index"
       post '/friendships/:id', to: "friendships#seguir"
+      resources :likes, only: [:show, :destroy]
+      post '/likes/:id', to: "likes#create"
       resources :friendships, only: [:index, :show, :create, :destroy]
+      resources :hashtags, only: [:index]
       resources :followers, only: [:index, :show, :create, :destroy]
       resources :followings, only: [:index, :show, :create, :destroy]
       #get '/friendship', to: "friendships#create"
