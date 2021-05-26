@@ -16,6 +16,7 @@ class User < ApplicationRecord
 
   validates :username, uniqueness: true
   has_many :tweets
+  has_many :messages
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable,
          :jwt_authenticatable, jwt_revocation_strategy: self

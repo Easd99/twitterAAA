@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       post '/friendships/:id', to: "friendships#seguir"
       resources :likes, only: [:show, :destroy]
       post '/likes/:id', to: "likes#create"
+      post '/messages/:id', to: "messages#create"
       resources :friendships, only: [:index, :show, :create, :destroy]
       resources :hashtags, only: [:index]
       resources :followers, only: [:index, :show, :create, :destroy]
