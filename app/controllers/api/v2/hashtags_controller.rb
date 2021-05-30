@@ -6,24 +6,19 @@ module Api
 
             def index 
                 hashtag = "%#{setHashtag}%"
-                tweets = Tweet.where("description LIKE ? ", hashtag)
-                tweetsList = []
-                sw = false
-                tweets.each do |tweet|
-                    descripSpl = tweet.description.split(' ')
-                    descripSpl.each do |palabra|
-                        if (palabra.casecmp(setHashtag) == 0)
-                            sw = true
+                if setHashtag.match(/[#][a-zA-Z0-9]/)
+                    tweets = Tweet.where("description LIKE ? ", hashtag)
+                    tweetsList = []
+                    tweets.each do |tweet|
+                        unless tweet.description.match(/#{setHashtag}[a-zA-Z]/) or tweet.description.match(/[a-zA-Z]#{setHashtag}/)
+                            tweetsList.push(tweet)
                         end
                     end
-                    if sw == true
-                        tweetsList.push(tweet)
-                        sw = false
-                    end
-
+                    render json: {tweets: tweetsList}
+                else
+                    
                 end
-
-                render json: {tweets: tweetsList}
+                
             end
 
             private
