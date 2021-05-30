@@ -4,12 +4,13 @@ module Api
             before_action :set_tweet, only: [:show, :destroy]
                 
             def index
-                @tweets = Tweet.all
-                render json: @tweets
+                @tweets = Tweet.all.includes(:user)
+                
+                render json: @tweets.to_json(:include =>{  :user => {:only => [:id, :username, :name, :email]} })
             end
 
             def show
-                render json: @tweet   
+                render json: @tweet.to_json(:include =>{  :user => {:only => [:id, :username, :name, :email]} })
             end
             
             # def new
