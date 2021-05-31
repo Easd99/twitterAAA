@@ -16,6 +16,7 @@
                 <div class="twets_bar_cen">
                     <%=tweet.description %>
                 </div>
+                <%= image_tag tweet.image if tweet.image.attached?%>
                 <!-- Aqui se muestra la informacion del tweet y si eres el dueno de el-->
                 <!-- lo puedes borrar  -->
                 <div class="twets_bar_inf">
@@ -28,7 +29,7 @@
             </div>
     <%end%>
 </div>
-<%= link_to('New Twitt', new_tweet_path , class:"rst")%>
+<%= link_to('New Twett', new_tweet_path , class:"rst")%>
 
 
 

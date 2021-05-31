@@ -7,6 +7,7 @@
         <div class="twets_bar_cen">
             <%= @tweet.id %>   - 
             <%= @tweet.description %>
+            <%= image_tag @tweet.image if @tweet.image.attached?%>
         </div>
         <div class="twets_bar_inf">
             <% if current_user.id == @tweet.user_id %>

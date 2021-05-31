@@ -12,8 +12,8 @@ Rails.application.configure do
   config.eager_load = false
 
   #url
-  config.action_controller.default_url_options = {:host => "twitteraaa.herokuapp.com"}
-  config.action_mailer.default_url_options = { :host => 'twitteraaa.herokuapp.com' }
+  config.action_controller.default_url_options = {:host => "localhost:3000"}
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
   #config.action_controller.default_url_options = {:host => 'localhost'}
   #config.action_mailer.default_url_options = { :host => 'localhost' }
@@ -36,7 +36,7 @@ Rails.application.configure do
   end
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
+  config.active_storage.service = :amazon
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false

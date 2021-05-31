@@ -28,7 +28,7 @@ module Api
             def set_tweet
                 @tweet=Tweet.find(params[:id])
                 rescue ActiveRecord::RecordNotFound
-                render :json => {:error => "TWITT NOT FOUND"}.to_json, :status => 404
+                render :json => {:error => "TWETT NOT FOUND"}.to_json, :status => 404
             end
         end
     end
