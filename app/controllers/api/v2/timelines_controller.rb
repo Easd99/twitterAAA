@@ -7,7 +7,7 @@ module Api
         
             def index
                 @tweets = Tweet.where(user_id: current_user.friendships).or(Tweet.where(user_id: current_user.id))
-                render json: {timeline: @tweets}
+                render json: {timeline: @tweets} , include: {:user => {:only => [:id, :username, :name, :email]} }
                 #render json: User.first.friendships.
             end
 

@@ -12,7 +12,7 @@ module Api
                   if user.valid_password?(user_param_pass)
                     user.update_column(:jti, User.generate_jti)
                     token = user.generate_jwt(user.jti)
-                    render :json => {"token" => token} .to_json
+                    render :json => {"token" => token, id: user.id} .to_json
                   else
                     render :json => {:error => "User and/or password incorrect"}.to_json, :status => 404
                   end
