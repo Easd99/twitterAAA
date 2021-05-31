@@ -9,7 +9,7 @@ module Api
                 users.each do |user|
                     userslist.push({"id" => user.id, "username" => user.username})
                 end
-                render json: userslist
+                render json: {userlist: userslist}
                 # @users = User.all
                 # hash = Hash[@users.map { |l| [:id, l.id] }]
                 # render json: hash
@@ -43,9 +43,9 @@ module Api
             def set_user
                 @friend = User.find(params[:id])
                 rescue ActiveRecord::RecordNotFound
-                render :json => {:error => "TWITT NOT FOUND"}.to_json, :status => 404
+                render :json => {:error => "User not found"}.to_json, :status => 404
             end
-            
+
             def render404
                 render :json => {:error => "YA LO SIGUES"}.to_json, :status => 404
             end

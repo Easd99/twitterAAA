@@ -21,6 +21,21 @@ RSpec.describe TweetsController, "#create" do
             expect(Tweet.last.description).not_to be_falsy
         end
     end
+
+    context "When a tweet is not saved" do
+        let(:user) {create(:user, :confirmed)}
+        before do
+            sign_in(user)
+            text =  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Praesent non ex at justo faucibus sollicitudin. Donec nec erat et est hendrerit aliquet.
+            Donec erat turpis, bibendum ac nunc eu, hendrerit ultricies massa. Curabitur condimentum 
+            leo in massa commodo interdum vel molestie in."
+            post :create, params: {tweet: {description: text, user_id: 1} }
+        end
+        it "should redirect user to Tweet Index" do
+            expect(subject).to  redirect_to(new_tweet_path)
+        end
+    end
  
 end
 

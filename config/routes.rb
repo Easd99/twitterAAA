@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   Rails.application.routes.default_url_options[:host] = 'https://twitteraaa.herokuapp.com'
-
  
   get '/confirmationsuccessfull', to: 'home#successfull'
   root  'home#index'
@@ -23,7 +22,11 @@ Rails.application.routes.draw do
       end
       get '/timeline', to: "timelines#index"
       post '/friendships/:id', to: "friendships#seguir"
+      resources :likes, only: [:show, :destroy]
+      post '/likes/:id', to: "likes#create"
+      post '/messages/:id', to: "messages#create"
       resources :friendships, only: [:index, :show, :create, :destroy]
+      resources :hashtags, only: [:index]
       resources :followers, only: [:index, :show, :create, :destroy]
       resources :followings, only: [:index, :show, :create, :destroy]
       #get '/friendship', to: "friendships#create"
