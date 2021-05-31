@@ -153,6 +153,7 @@ GEM
     nokogiri (1.11.1-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pg (1.2.3)
     public_suffix (4.0.6)
     puma (5.2.1)
       nio4r (~> 2.0)
@@ -263,8 +264,6 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-    tzinfo-data (1.2021.1)
-      tzinfo (>= 1.0.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     warden-jwt_auth (0.5.0)
@@ -307,6 +306,7 @@ DEPENDENCIES
   factory_bot_rails
   jbuilder (~> 2.7)
   listen (~> 3.3)
+  pg (~> 1.2, >= 1.2.3)
   puma (~> 5.0)
   rack-cors
   rack-mini-profiler (~> 2.0)
