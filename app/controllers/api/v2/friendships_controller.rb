@@ -27,7 +27,7 @@ module Api
                         render json: {follow: friendhash}
                     end
                 else
-                    render :json => {:error => "NO TE PUEDES SEGUIR A TI "}.to_json, :status => 404
+                    render :json => {:error => "NO TE PUEDES SEGUIR A TI "}.to_json, :status => 400
                 end
             end
 
@@ -47,7 +47,7 @@ module Api
             end
 
             def render404
-                render :json => {:error => "YA LO SIGUES"}.to_json, :status => 404
+                render :json => {:error => "YA LO SIGUES"}.to_json, :status => 400
             end
         end
     end

@@ -6,7 +6,7 @@
             <div class="twets_contend">
                 <!-- Aqui se si mostrar el borde superior o no-->
                 <% if tweet.id == 1 %> 
-                    <hr class="borde_first">      
+                    <hr class="borde_first" >      
                 <%end%>
                 <!-- Aqui se muestra el nombre -->
                 <div class="twets_bar_sup">
@@ -16,7 +16,7 @@
                 <div class="twets_bar_cen">
                     <%=tweet.description %>
                 </div>
-                <%= image_tag tweet.image if tweet.image.attached?%>
+                <%= image_tag(tweet.image , :size => "180x135")  if tweet.image.attached?%>
                 <!-- Aqui se muestra la informacion del tweet y si eres el dueno de el-->
                 <!-- lo puedes borrar  -->
                 <div class="twets_bar_inf">

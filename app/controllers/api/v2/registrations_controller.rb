@@ -24,7 +24,7 @@ module Api
             end
             private
             def render404
-                render :json => {:error => "SOME OF DATA HAS ALREADY TAKEN"}.to_json, :status => 404
+                render :json => {:error => "SOME OF DATA HAS ALREADY TAKEN"}.to_json, :status => 422
             end
         end
     end

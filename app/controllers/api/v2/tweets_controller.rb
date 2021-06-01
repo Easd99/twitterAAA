@@ -5,11 +5,57 @@ module Api
                 
             def index
                 tweets = Tweet.all
-                render json: { tweets: tweets} , include: {:user => {:only => [:id, :username, :name, :email]} }
+                tweetsList = []
+                tweets.each do | tweet|
+                    if tweet.image.blob
+                        tweetObj = {
+                            id: tweet.id,
+                            description: tweet.description,
+                            user_id: tweet.user_id,
+                            created_at: tweet.created_at,
+                            updated_at: tweet.updated_at,
+                            user:{
+                                id: tweet.user.id,
+                                name: tweet.user.name,
+                                username: tweet.user.username,
+                                email: tweet.user.email
+                            },
+                            image: {
+                                url: tweet.image.blob.service_url
+                            }
+
+                        }
+                    else
+                        tweetObj = {
+                            id: tweet.id,
+                            description: tweet.description,
+                            user_id: tweet.user_id,
+                            created_at: tweet.created_at,
+                            updated_at: tweet.updated_at,
+                            user:{
+                                id: tweet.user.id,
+                                name: tweet.user.name,
+                                username: tweet.user.username,
+                                email: tweet.user.email
+                            },
+                            image: {
+                                url: nil
+                            }
+
+                        }
+                    end
+                    tweetsList.push(tweetObj)
+                end
+
+                render json: tweetsList
+                #render json: { tweets: tweets} , include: {:user => {:only => [:id, :username, :name, :email]}, :image => {include: [:blob] } }
+                #render json: { tweets: tweets} , include: {:user => {:only => [:id, :username, :name, :email]}, :image => {include: [:blob] } }
+                #render json:  tweets, include: {:user => {:only => [:id, :username, :name, :email]} }
             end
 
             def show
-                render json: { tweets: @tweet} , include: {:user => {:only => [:id, :username, :name, :email]} }
+                #render json: { tweets: @tweet} , include: {:user => {:only => [:id, :username, :name, :email]} }
+                render json: @tweet , include: {:user => {:only => [:id, :username, :name, :email]} }
             end
             
             # def new
@@ -33,7 +79,7 @@ module Api
                     @tweet.destroy
                     render :json => {:error => "NO CONTENT"}.to_json, :status => 204
                 else
-                    render :json => {:error => "CAN'T DELETE THIS TWEET"}.to_json, :status => 404
+                    render :json => {:error => "CAN'T DELETE THIS TWEET"}.to_json, :status => 403
                 end
             end
         

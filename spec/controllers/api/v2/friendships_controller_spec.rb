@@ -52,7 +52,7 @@ RSpec.describe Api::V2::FriendshipsController, "#follow" do
             post :seguir, params: {id: user.id}
         end
         it "should not be saved " do            
-            expect(response).to have_http_status(404)
+            expect(response).to have_http_status(400)
         end
         it "should be saved " do            
             json_response = JSON.parse(response.body)
@@ -76,7 +76,7 @@ RSpec.describe Api::V2::FriendshipsController, "#follow" do
             post :seguir, params: {id: user2.id}
         end
         it "should not be saved " do            
-            expect(response).to have_http_status(404)
+            expect(response).to have_http_status(400)
         end
         it "should be saved " do            
             json_response = JSON.parse(response.body)

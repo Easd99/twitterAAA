@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/spec/controllers/api/v2/followers_controller_spec.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/spec/controllers/api/v2/followers_controller_spec.rb": {
         "lines": [
           1,
           null,
@@ -31,7 +31,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/spec/rails_helper.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/spec/rails_helper.rb": {
         "lines": [
           null,
           1,
@@ -118,7 +118,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/config/environment.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/config/environment.rb": {
         "lines": [
           null,
           1,
@@ -131,7 +131,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/config/application.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/config/application.rb": {
         "lines": [
           1,
           null,
@@ -157,7 +157,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/config/boot.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/config/boot.rb": {
         "lines": [
           1,
           null,
@@ -165,7 +165,7 @@
           1
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/config/environments/test.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/config/environments/test.rb": {
         "lines": [
           1,
           null,
@@ -229,7 +229,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/config/initializers/application_controller_renderer.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/config/initializers/application_controller_renderer.rb": {
         "lines": [
           null,
           null,
@@ -241,7 +241,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/config/initializers/assets.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/config/initializers/assets.rb": {
         "lines": [
           null,
           null,
@@ -259,7 +259,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/config/initializers/backtrace_silencers.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/config/initializers/backtrace_silencers.rb": {
         "lines": [
           null,
           null,
@@ -271,7 +271,7 @@
           1
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/config/initializers/content_security_policy.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/config/initializers/content_security_policy.rb": {
         "lines": [
           null,
           null,
@@ -305,7 +305,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/config/initializers/cookies_serializer.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/config/initializers/cookies_serializer.rb": {
         "lines": [
           null,
           null,
@@ -314,7 +314,7 @@
           1
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/config/initializers/cors.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/config/initializers/cors.rb": {
         "lines": [
           1,
           1,
@@ -324,7 +324,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/config/initializers/devise.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/config/initializers/devise.rb": {
         "lines": [
           null,
           null,
@@ -650,7 +650,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/config/initializers/filter_parameter_logging.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/config/initializers/filter_parameter_logging.rb": {
         "lines": [
           null,
           null,
@@ -660,36 +660,13 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/config/initializers/inflections.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/config/initializers/inflections.rb": {
         "lines": [
           null,
           null,
           null,
           null,
           null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/config/initializers/mime_types.rb": {
-        "lines": [
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/config/initializers/permissions_policy.rb": {
-        "lines": [
           null,
           null,
           null,
@@ -703,7 +680,30 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/config/initializers/wrap_parameters.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/config/initializers/mime_types.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/config/initializers/permissions_policy.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/config/initializers/wrap_parameters.rb": {
         "lines": [
           null,
           null,
@@ -721,7 +721,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/spec/factories/tweets.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/spec/factories/tweets.rb": {
         "lines": [
           1,
           1,
@@ -737,7 +737,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/spec/factories/users.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/spec/factories/users.rb": {
         "lines": [
           1,
           null,
@@ -758,7 +758,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/config/routes.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/config/routes.rb": {
         "lines": [
           1,
           1,
@@ -800,7 +800,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/app/models/user.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/app/models/user.rb": {
         "lines": [
           1,
           1,
@@ -843,21 +843,21 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/app/models/application_record.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/app/helpers/application_helper.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/app/helpers/application_helper.rb": {
         "lines": [
           1,
           null,
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/app/controllers/api/v2/followers_controller.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/app/controllers/api/v2/followers_controller.rb": {
         "lines": [
           1,
           1,
@@ -902,7 +902,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/app/controllers/api/v2/api_controller.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/app/controllers/api/v2/api_controller.rb": {
         "lines": [
           1,
           1,
@@ -954,7 +954,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/spec/controllers/api/v2/followings_controller_spec.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/spec/controllers/api/v2/followings_controller_spec.rb": {
         "lines": [
           1,
           null,
@@ -983,7 +983,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/app/controllers/api/v2/followings_controller.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/app/controllers/api/v2/followings_controller.rb": {
         "lines": [
           1,
           1,
@@ -1021,7 +1021,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/spec/controllers/api/v2/friendships_controller_spec.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/spec/controllers/api/v2/friendships_controller_spec.rb": {
         "lines": [
           1,
           null,
@@ -1170,7 +1170,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/app/controllers/api/v2/friendships_controller.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/app/controllers/api/v2/friendships_controller.rb": {
         "lines": [
           1,
           1,
@@ -1228,7 +1228,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/spec/controllers/api/v2/hashtags_controller_spec.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/spec/controllers/api/v2/hashtags_controller_spec.rb": {
         "lines": [
           1,
           null,
@@ -1257,7 +1257,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/app/controllers/api/v2/hashtags_controller.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/app/controllers/api/v2/hashtags_controller.rb": {
         "lines": [
           1,
           1,
@@ -1293,7 +1293,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/spec/controllers/api/v2/likes_controller_spec.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/spec/controllers/api/v2/likes_controller_spec.rb": {
         "lines": [
           1,
           null,
@@ -1398,7 +1398,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/app/controllers/api/v2/likes_controller.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/app/controllers/api/v2/likes_controller.rb": {
         "lines": [
           1,
           1,
@@ -1437,7 +1437,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/spec/controllers/api/v2/messages_controller_spec.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/spec/controllers/api/v2/messages_controller_spec.rb": {
         "lines": [
           1,
           null,
@@ -1498,7 +1498,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/app/controllers/api/v2/messages_controller.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/app/controllers/api/v2/messages_controller.rb": {
         "lines": [
           1,
           1,
@@ -1536,7 +1536,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/spec/controllers/api/v2/timelines_controller_spec.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/spec/controllers/api/v2/timelines_controller_spec.rb": {
         "lines": [
           1,
           null,
@@ -1590,7 +1590,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/app/controllers/api/v2/timelines_controller.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/app/controllers/api/v2/timelines_controller.rb": {
         "lines": [
           1,
           1,
@@ -1623,7 +1623,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/spec/controllers/api/v2/tweets_controller_spec.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/spec/controllers/api/v2/tweets_controller_spec.rb": {
         "lines": [
           1,
           null,
@@ -1839,7 +1839,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/app/controllers/api/v2/tweets_controller.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/app/controllers/api/v2/tweets_controller.rb": {
         "lines": [
           1,
           1,
@@ -1848,11 +1848,56 @@
           null,
           1,
           2,
+          2,
+          2,
+          20,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          20,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          20,
+          null,
           null,
           2,
           null,
           null,
+          null,
+          null,
+          null,
           1,
+          null,
           2,
           null,
           null,
@@ -1896,7 +1941,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/spec/controllers/tweets_controller_spec.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/spec/controllers/tweets_controller_spec.rb": {
         "lines": [
           1,
           null,
@@ -1971,7 +2016,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/app/controllers/tweets_controller.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/app/controllers/tweets_controller.rb": {
         "lines": [
           1,
           null,
@@ -2021,7 +2066,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/app/controllers/application_controller.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/app/controllers/application_controller.rb": {
         "lines": [
           1,
           1,
@@ -2045,7 +2090,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/spec/models/tweet_spec.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/spec/models/tweet_spec.rb": {
         "lines": [
           1,
           null,
@@ -2071,7 +2116,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/app/models/tweet.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/app/models/tweet.rb": {
         "lines": [
           1,
           null,
@@ -2085,7 +2130,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/app/models/friendship.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/app/models/friendship.rb": {
         "lines": [
           1,
           null,
@@ -2099,7 +2144,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/app/mailers/friendship_mailer.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/app/mailers/friendship_mailer.rb": {
         "lines": [
           1,
           null,
@@ -2112,7 +2157,7 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/app/mailers/application_mailer.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/app/mailers/application_mailer.rb": {
         "lines": [
           1,
           1,
@@ -2120,14 +2165,14 @@
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/app/models/like.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/app/models/like.rb": {
         "lines": [
           1,
           null,
           null
         ]
       },
-      "C:/Users/Sergio/Desktop/entrega1/entrega-01-xd-master/app/models/message.rb": {
+      "/home/easd99/labs/entregas/entrega1/twitterAAA/app/models/message.rb": {
         "lines": [
           1,
           null,
@@ -2137,6 +2182,6 @@
         ]
       }
     },
-    "timestamp": 1622493361
+    "timestamp": 1622514995
   }
 }

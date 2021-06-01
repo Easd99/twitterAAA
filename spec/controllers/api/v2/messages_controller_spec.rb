@@ -29,7 +29,7 @@ RSpec.describe Api::V2::MessagesController, "#create" do
             post :create, params: { id: userA.id, message: "hola"} 
         end
         it "should return HTTP success code" do
-            expect(response).to have_http_status(400)
+            expect(response).to have_http_status(401)
         end
         it "should return Tweet in JSON body" do
             json_response = JSON.parse(response.body)

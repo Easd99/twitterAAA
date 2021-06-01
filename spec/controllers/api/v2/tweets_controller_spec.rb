@@ -65,7 +65,7 @@ RSpec.describe Api::V2::TweetsController, "#index" do
         it "should return Tweet in JSON body" do
             json_response = JSON.parse(response.body)
             
-            expect(json_response.first.keys).to  match_array(["id","description","user_id","user","created_at","updated_at"])
+            expect(json_response.first.keys).to  match_array(["id","description","user_id","user","created_at","updated_at", 'image'])
         end
     end
     context "Token invalido" do
@@ -123,7 +123,7 @@ RSpec.describe Api::V2::TweetsController, "#destroy" do
             delete :destroy, params: { id: tweet.id} 
         end
         it "should return HTTP invalid code" do
-            expect(response).to have_http_status(404)
+            expect(response).to have_http_status(403)
         end
         it "not to be equal id and tweet_user id" do
             expect(user.id).not_to eq(tweet.user_id)
