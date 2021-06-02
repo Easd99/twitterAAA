@@ -16,6 +16,7 @@ class User < ApplicationRecord
 
   validates :username, uniqueness: true
   has_many :tweets
+  has_many :likes
   has_many :messages
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable,
@@ -35,5 +36,32 @@ class User < ApplicationRecord
   def generate_jwt(jti)
     JWT.encode({id: id, exp: 30.days.from_now.to_i, jti: jti}, Rails.application.secret_key_base)
   end
+
+  def like(tweet_id)
+    
+    likes.where(tweet_id: tweet_id)
+
+  end
+  def followers()
+    followers = Friendship.where(friend_user_id: id)
+    @followerslist=[]
+    followers.each do |follower|
+        users = User.where(id: follower.user_id)
+        users.each do |user|
+            @followerslist.push({id: user.id, username: user.username})
+        end
+    end
+    return @followerslist
+
+  end
+
+  def follower?(friend_id)
+    Friendship.where(user_id:friend_id , friend_user_id: id).first
+  end
+
+  def follow?(friend_id)
+    Friendship.where(user_id: id , friend_user_id: friend_id).first
+  end
+
          
 end

@@ -7,6 +7,15 @@ Rails.application.routes.draw do
   root  'home#index'
   get '/index', to: 'tweets#index'
   resources :tweets
+  resources :users, only:[ :show]
+  resources :messages, only: [:index, :create]
+  resources :timelines, only: [:index]
+  resources :likes, only: [:create, :destroy]
+  resources :followers, only: [:index, :show, :create, :destroy]
+  resources :followings, only: [:index, :show, :create, :destroy]
+  post '/friendships/:id', to: "friendships#seguir"
+  resources :friendships, only: [:destroy]
+  resources :hashtags, only: [:index]
 
   namespace :api do
     namespace :v1 do

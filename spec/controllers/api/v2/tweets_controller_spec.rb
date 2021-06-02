@@ -65,7 +65,8 @@ RSpec.describe Api::V2::TweetsController, "#index" do
         it "should return Tweet in JSON body" do
             json_response = JSON.parse(response.body)
             
-            expect(json_response.first.keys).to  match_array(["id","description","user_id","user","created_at","updated_at", 'image'])
+           # expect(json_response.first.keys).to  match_array(["id","description","user_id","user","created_at","updated_at", 'image'])
+            expect(json_response.first.keys).to  match_array(["id","description","user_id","user","created_at","updated_at"])
         end
     end
     context "Token invalido" do

@@ -1,0 +1,37 @@
+<div id="contenedor">
+    <div id="cabecera">
+        <p>Mensajes</p>
+    </div>
+    <div id="menu">
+        <ul>
+            <% current_user.followers.each  do |follower|%>
+                <%= link_to(follower[:username], messages_path(id: follower[:id]), class:"rst", method: 'get') %>
+            <%end%>
+        </ul>
+    </div>
+    <div id="contenido">
+    
+        <% @messages.each  do |message|%>
+            <% if (message.user_id == current_user.id) %>
+                <label class="derecha">  <%= message.message %>  </label>
+            <% else %>
+                <label class="izquierda">  <%= message.message %>  </label>
+            <% end %>
+            <br>
+        <% end%>
+            <% @frid = @friend.id%>
+                
+    </div>
+    <div id="pie">
+    <%= form_with(model: Message, local: true) do |form|%>
+        <div>
+            <%= hidden_field_tag 'token', @frid %>
+            <% if (current_user.follower?(@frid)) %>
+                <%= form.label :message %>
+                <%= form.text_area :message, size: "20x1", class: "messages" %>
+                <%= form.submit "Enviar" %>
+            <% end %>
+        </div>
+    <%end%>
+    </div>
+</div>
