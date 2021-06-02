@@ -192,7 +192,7 @@ ul {
   width:800px;
 }
 #contenido {
-  background-color:#ddd;
+  background-color: #AEDCFE;
   color: #000;
   float:left;
   height:500px;
@@ -204,7 +204,8 @@ ul {
 .izquierda { float: left;  }
 
 #menu {
-  background-color:springgreen;
+  background-color: #81D4FC;
+
   float:left;
   height:480px;
   padding:20px;

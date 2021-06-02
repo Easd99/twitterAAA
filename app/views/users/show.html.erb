@@ -7,10 +7,12 @@
             <span> </span>
         <% else %>
         <%= link_to('Follow', friendship_path(id: @user.id), class:"rst", method: 'post') %>
-            
         <% end %>
-        
     <% end %>
+    <div>
+        <label class="derecha"> seguidos <%= @user.followings.length %> </label>
+        <label class="izquierda"> seguidores <%= @user.followers.length %> </label>
+    <div>
 </header>
 <div>
     <% @tweets.each  do |tweet|%>
@@ -28,6 +30,7 @@
                     <%=tweet.description %>
                 </div>
                 <%= image_tag(tweet.image , :size => "180x135")  if tweet.image.attached?%>
+                <%= tweet.likes.length %>
                 <!-- Aqui se muestra la informacion del tweet y si eres el dueno de el-->
                 <!-- lo puedes borrar  -->
                 <div class="twets_bar_inf">
@@ -36,9 +39,9 @@
                         <%= link_to('Delete', tweet_path(tweet.id), class:"rst", method: 'delete', data: {confirm: "Are you SURE?"}) %>
                     <%end%>
                     <%if (current_user.like(tweet.id).blank?) %>
-                         <%= link_to('Like', likes_path(id: tweet.id), class:"rst", method: 'post') %>
+                         <%= link_to('Like', likes_path(id: tweet.id, index_id: @user.id), class:"rst", method: 'post') %>
                     <%else %>
-                        <%= link_to('Dislike', like_path(id: tweet.id), class:"rst", method: 'delete') %>
+                        <%= link_to('Dislike', like_path(id: tweet.id, index_id: @user.id), class:"rst", method: 'delete') %>
                     <%end %>
 
                 </div>

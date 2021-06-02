@@ -1,5 +1,7 @@
 <header>
     <h1> Hashtags index </h1>
+
+    
 </header>
 <div>
     <% @tweets.each  do |tweet|%>
@@ -14,7 +16,6 @@
                 </div>
                 <!-- Aqui se muestra la descripcion -->
                 <div class="twets_bar_cen">
-                    
                   <%= render_with_hashtags(tweet.description).html_safe %>
                 </div>
                 <%= image_tag(tweet.image , :size => "180x135")  if tweet.image.attached?%>

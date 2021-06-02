@@ -2,17 +2,25 @@
 <div>
     <div class="twets_contend">
         <div class="twets_bar_sup">
-           <label>  <b> <%= @tweet.user.name %>  </b> </label> <label class="der"> <%= @tweet.user.username %> </label>
+           <label>  <b> <%= @tweet.user.name %>  </b> </label> <label class="der"> <%= link_to(@tweet.user.username, user_path(id: @tweet.user.id), class:"rst", method: 'get') %>  </label>
         </div>
         <div class="twets_bar_cen">
             <%= @tweet.id %>   - 
-            <%= @tweet.description %>
-            <%= image_tag @tweet.image if @tweet.image.attached?%>
+                <div class="twets_bar_cen">
+                  <%= render_with_hashtags(@tweet.description).html_safe %>
+                </div>
+             <%= image_tag(@tweet.image , :size => "180x135")  if @tweet.image.attached?%>
+            <%=@tweet.likes.length %>
         </div>
         <div class="twets_bar_inf">
             <% if current_user.id == @tweet.user_id %>
                 <%= link_to('Delete', tweet_path(@tweet.id), class:"rst", method: 'delete', data: {confirm: "Are you SURE?"})  %>
             <%end%>
+            <%if (current_user.like(@tweet.id).blank?) %>
+                <%= link_to('Like', likes_path(id: @tweet.id, rID: @tweet.id), class:"rst", method: 'post') %>
+            <%else %>
+                <%= link_to('Dislike', like_path(id: @tweet.id, rID: @tweet.id), class:"rst", method: 'delete') %>
+            <%end %>
         </div>
     </div>
  </div>

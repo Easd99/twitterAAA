@@ -7,7 +7,7 @@ class HashtagsController < ApplicationController
         if setHashtag.match(/[#][a-zA-Z0-9]/)
             tweets = Tweet.where("description LIKE ? ", hashtag)
             tweets.each do |tweet|
-                unless tweet.description.match(/#{setHashtag}[a-zA-Z]/) or tweet.description.match(/[a-zA-Z]#{setHashtag}/)
+                unless tweet.description.match(/#{setHashtag}[a-zA-Z]/)
                     tweetsList.push(tweet)
                 end
             end

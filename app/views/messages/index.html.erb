@@ -4,8 +4,9 @@
     </div>
     <div id="menu">
         <ul>
-            <% current_user.followers.each  do |follower|%>
+            <% current_user.followersAndfollowing.each  do |follower|%>
                 <%= link_to(follower[:username], messages_path(id: follower[:id]), class:"rst", method: 'get') %>
+                <br>
             <%end%>
         </ul>
     </div>

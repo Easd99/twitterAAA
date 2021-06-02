@@ -59,9 +59,37 @@ class User < ApplicationRecord
     Friendship.where(user_id:friend_id , friend_user_id: id).first
   end
 
+  def followers()
+    Friendship.where(friend_user_id: id)
+  end
+
   def follow?(friend_id)
     Friendship.where(user_id: id , friend_user_id: friend_id).first
   end
 
+  def followings()
+    Friendship.where(user_id: id)
+  end
+
+  def followersAndfollowing()
+    list = Friendship.where(friend_user_id: id).or(Friendship.where(user_id: id))
+    @all = []
+
+    list.each do |l|
+      if l.user_id == id
+        user = User.where(id: l.friend_user_id)
+      else
+        user = User.where(id: l.user_id)
+      end
+
+      user.each do |u|
+        @all.push({id: u.id, username: u.username})
+      end
+
+    end
+    
+    return @all
+
+  end
          
 end
