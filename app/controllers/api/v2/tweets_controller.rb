@@ -5,52 +5,52 @@ module Api
                 
             def index
                 tweets = Tweet.all
-                # tweetsList = []
-                # tweets.each do | tweet|
-                #     if tweet.image.blob
-                #         tweetObj = {
-                #             id: tweet.id,
-                #             description: tweet.description,
-                #             user_id: tweet.user_id,
-                #             created_at: tweet.created_at,
-                #             updated_at: tweet.updated_at,
-                #             user:{
-                #                 id: tweet.user.id,
-                #                 name: tweet.user.name,
-                #                 username: tweet.user.username,
-                #                 email: tweet.user.email
-                #             },
-                #             image: {
-                #                 url: tweet.image.blob.service_url
-                #             }
+                tweetsList = []
+                tweets.each do | tweet|
+                    if tweet.image.blob
+                        tweetObj = {
+                            id: tweet.id,
+                            description: tweet.description,
+                            user_id: tweet.user_id,
+                            created_at: tweet.created_at,
+                            updated_at: tweet.updated_at,
+                            user:{
+                                id: tweet.user.id,
+                                name: tweet.user.name,
+                                username: tweet.user.username,
+                                email: tweet.user.email
+                            },
+                            image: {
+                                url: tweet.image.blob.service_url
+                            }
 
-                #         }
-                #     else
-                #         tweetObj = {
-                #             id: tweet.id,
-                #             description: tweet.description,
-                #             user_id: tweet.user_id,
-                #             created_at: tweet.created_at,
-                #             updated_at: tweet.updated_at,
-                #             user:{
-                #                 id: tweet.user.id,
-                #                 name: tweet.user.name,
-                #                 username: tweet.user.username,
-                #                 email: tweet.user.email
-                #             },
-                #             image: {
-                #                 url: nil
-                #             }
+                        }
+                    else
+                        tweetObj = {
+                            id: tweet.id,
+                            description: tweet.description,
+                            user_id: tweet.user_id,
+                            created_at: tweet.created_at,
+                            updated_at: tweet.updated_at,
+                            user:{
+                                id: tweet.user.id,
+                                name: tweet.user.name,
+                                username: tweet.user.username,
+                                email: tweet.user.email
+                            },
+                            image: {
+                                url: nil
+                            }
 
-                #         }
-                #     end
-                #     tweetsList.push(tweetObj)
-                # end
+                        }
+                    end
+                    tweetsList.push(tweetObj)
+                end
 
-                # render json: tweetsList
+                render json: tweetsList
                 #render json: { tweets: tweets} , include: {:user => {:only => [:id, :username, :name, :email]}, :image => {include: [:blob] } }
                 #render json: { tweets: tweets} , include: {:user => {:only => [:id, :username, :name, :email]}, :image => {include: [:blob] } }
-                render json:  tweets, include: {:user => {:only => [:id, :username, :name, :email]} }
+                #render json:  tweets, include: {:user => {:only => [:id, :username, :name, :email]} }
             end
 
             def show
