@@ -11,6 +11,8 @@ RSpec.describe Tweet, type: :model do
 
   describe 'associations' do
     it { should belong_to(:user)}
+    it { should have_many(:likes)}
+    it { should have_one_attached(:image)}
   end
 
 end
