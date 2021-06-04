@@ -5,7 +5,7 @@ RSpec.describe Api::V2::HashtagsController, "#index" do
     context "When a like" do
         let(:user) {create(:user, :confirmed)}
         let(:tweet) {create(:tweet, user: user)}
-        let(:tweet) {create(:tweet, :invalid, user: user)}
+        let(:tweet2) {create(:tweet, :invalid, user: user)}
 
         before do
             token = user.generate_jwt(user.jti)
