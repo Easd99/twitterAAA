@@ -9,8 +9,8 @@ local:
 
 amazon:
   service: S3
-  access_key_id: AKIA57UKBGGLEX677SXI
-  secret_access_key: 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
+  access_key_id: ...
+  secret_access_key: ...
   region: us-west-2
   bucket: twiteraaa  
 
